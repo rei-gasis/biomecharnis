@@ -1,0 +1,415 @@
+:root {
+	--primary-color: #711712;
+	--secondary-color: #3a3a3a;
+
+	--def: #96B7C4; 	
+	--inv: #fff;
+
+	--room-depth: 300px;
+}
+
+/*@import url(https://fonts.googleapis.com/css?family=Lato:900);
+*/
+html, body {
+	padding: 0;
+	margin: 0;
+	/*height: 100%;*/
+	font-family: 'Lato', sans-serif;
+
+
+}
+
+body {
+	background-color: var(--primary-color);
+	color: white;
+
+
+    
+	
+
+}
+
+
+h1 {
+	font-size: 4vw !important;
+}
+
+h1.page-title {
+	color: white;
+    background-color: transparent;
+    letter-spacing: .1em;
+    text-shadow: 
+      -1px -1px 1px #111, 
+      2px 2px 1px #363636;
+}
+
+
+h5 {
+	font-size: 2vw !important;
+}
+
+.full-width {
+	height: 100vh;
+	width: 100%;
+}
+
+.h-33 {
+	height: 33vh;
+}
+
+
+.home-section .row:nth-child(2) { /*middle*/
+	background-image: url('../images/home-section-bg.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+}
+
+
+.home-section .mid-box {
+	margin: auto;
+	background-color: #3a3a3a;
+	opacity: .9;
+}
+
+
+
+.page-navigation-container .custom-btn {
+	padding: 1.4rem 4.2rem;
+	padding-right: 3.1rem;
+}
+
+/*.page-navigation-container span {
+	position: absolute;
+}*/
+
+/*.page-navigation-container span > * {
+	margin-top: auto;;
+	right: 0;
+}*/
+
+/*btn effect nav - start*/
+.custom-btn {
+	position: relative;	
+	padding-left: auto;
+	padding-right: auto;
+	/*padding: 1.4rem 4.2rem;*/
+	/*padding-right: 3.1rem;*/
+	font-size: 1.8rem;
+	color: white;
+/* 	letter-spacing: 1.1rem; */
+	text-transform: uppercase;
+	transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);	
+	cursor: pointer;
+	user-select: none;
+}
+
+.custom-btn > a { 
+	color: white !important; /*Override bootstrap*/
+}
+
+.custom-btn:before, .custom-btn:after {
+	content: '';
+	position: absolute;	
+	transition: inherit;
+	z-index: -1;
+}
+
+.custom-btn:hover {
+	/*color: var(--primary-color);*/
+	/*transition-delay: .6s;*/
+}
+
+
+/*3D cube*/
+.cube-container {
+    -webkit-perspective: 2000px;
+    perspective: 2000px;
+    -webkit-perspective-origin: center;
+    perspective-origin: center;
+    overflow: hidden;
+    /*background-color: #222222;*/
+    width: 100vw;
+    height: 100vh;
+}
+
+#sections {
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform-origin: 50% 50% -50vw;
+    -o-transform-origin: 50% 50% -50vw;
+    transform-origin: 50% 50% -50vw;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+
+#sections section {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+    
+    overflow-x: hidden;
+
+    background-color: var(--primary-color);
+    /*font-size: 50px;*/
+    
+}
+
+
+#sections section.home-section {
+	-webkit-transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
+    transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
+	/*height: 100vh;*/
+    /*background-color: rgba(255, 217, 0, 0.8);*/
+}
+
+#sections section.arnis-list-section {
+	
+	-webkit-transform-origin: center;
+    -o-transform-origin: center;
+    transform-origin: center;
+    
+
+    overflow-y: hidden;
+
+    -webkit-transform: translateZ(-100vw) rotateY(-180deg);
+    transform: translateZ(-100vw) rotateY(-180deg);
+}
+
+#sections section.biomecharnis-section {
+	
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow-y: hidden;
+
+	background-image: radial-gradient(circle at center, #3a3a3a, black);
+
+	background: url('../images/3dbackground.png');
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+
+
+
+
+
+}
+
+#sections section.filler-2 {
+    -webkit-transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
+    transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
+
+}
+
+
+
+
+.page-navigation-container button{
+	display: flex;
+	/*position: absolute;*/
+	overflow: hidden;
+	/*left: 40%;
+	top: 40%;*/
+	height: 50px;
+  	width: 50px;
+	perspective: 200px;
+	background-color: black;
+
+	cursor: pointer;
+
+	padding: 0 !important; 
+	margin: 0 !important;
+	border: 0 !important;
+
+  
+}
+.page-navigation-container button span{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+
+	position: relative;
+	transition:0.3s ease-in-out all;
+	transform-origin:50% 0;
+  	transform-style:preserve-3d;
+	background-color: var(--secondary-color);
+	color: white;
+
+	height: 50px;
+  	width: 100%;
+
+  	padding: 0 !important; 
+	margin: 0 !important;
+	border: 0 !important;
+	
+
+}
+.page-navigation-container button span:after{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid black;
+
+	content: attr(data-title);
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition:0.3s ease-in-out all;
+	transform-origin:50% 0;
+	transform:translate3d(0px,100%,0px) rotateX(-90deg);
+	background-color: #711712;
+	color: white;
+
+	height: 50px;
+  	width: 100%;
+}
+
+.page-navigation-container button:hover span{
+	transform:translate3d(0px,0px,-30px) rotateX(90deg);
+}
+
+
+
+
+/*section.biomecharnis-section*/
+
+#biomecharnis-content {
+	overflow: hidden; 
+	max-height: 50vh;
+	scroll-behavior: smooth;
+
+}
+
+
+.parallax-container {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	/*transform: translate(25%, 25%);*/
+}
+
+.parallax-container #parallax-scene #pl-actual {
+	transform: scale(0.6);
+}
+
+.parallax-container #parallax-scene #pl-background {
+	transform: scale(1.2);
+
+
+
+}
+
+
+.room__container {
+	position: relative;
+	width: 100%;
+	height: 100vh;	
+	transform-style: preserve-3d;
+}
+
+.room {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100vw;
+	height: 100vh;
+	margin: -50vh 0 0 -50vw;
+	pointer-events: none;
+	opacity: 0;
+	transform-style: preserve-3d;
+	perspective: 2000px;
+}
+
+.room--current {
+	pointer-events: auto;
+	opacity: 1;
+}
+
+.room__side {
+	position: absolute;
+	
+	transform-style: preserve-3d;
+
+	
+
+
+}
+
+.room__side--left,
+.room__side--right {
+	width: 1000px; /* depth */
+	height: 100vh;
+	/*background: #dbdbdb;*/
+}
+
+.room__side--back {
+	width: 100vw;
+	height: 100vh;
+	box-shadow: 0 0 0 2px black;
+	transform: translate3d(30%, 0, -1000px) rotate3d(1,0,0,0.1deg) rotate3d(1,0,0,0deg);
+	/* Rotation due to rendering bug in Chrome when loader slides up (images seem cut off) */
+
+	background: url('../images/black-3d-background-1.jpg');
+	background-position: center;
+	background-attachment: all;
+	background-size: cover;
+
+
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	padding: 30px;
+}
+
+.room__side--right {
+	display: none;
+	right: 0;
+	justify-content: flex-end;
+	transform: rotate3d(0, 1, 0, -90.03deg) ; 
+	transform-origin: 100% 50%;
+	
+
+}
+
+.room__side--left {
+	justify-content: flex-start;
+	transform: rotate3d(0, 1, 0, 65deg);
+	transform-origin: 0 50%;
+	
+	background: url('../images/black-3d-background-1.jpg');
+	background-position: center;
+	background-attachment: all;
+	background-size: cover;
+
+}
+
+.room__side--bottom {
+	width: 100vw; /* depth */
+	height: 1000px;
+	/*background: #d0d0d0;*/
+	background-color: black !important;
+	transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -1000px, 0);
+	transform-origin: 50% 0%;
+	
+}
+
+.room__side--bottom {
+	top: 100%;
+}
+
+
+
+
+
+/*section.biomecharnis-section*/
+
+
+

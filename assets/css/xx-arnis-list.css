@@ -1,0 +1,356 @@
+:root {
+  --card-bg-color: white;
+  --primary-color: #711712;
+  --secondary-color: #3a3a3a;
+}
+
+
+
+
+.arnis-list-section .carousel-container {
+  z-index: 1;
+  margin: 80px auto;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  perspective: 1000px;
+
+}
+
+
+.arnis-list-section .carousel-container .carousel {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.viewer {
+  display: block;
+  position: absolute;
+  background: #000;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  font-size: 5em;
+  text-align: center;
+  color: #FFF;
+/*   opacity: 0.95; */
+  border-radius: 10px;
+  max-width: 200px;
+  /*backface-visibility: hidden; */
+}
+
+.viewer > img {
+  max-height: 180px !important;
+  margin-top: 0;
+  padding-top: 0;
+  /*width: 100%;
+  height: auto;
+  max-height: 200px;
+  left: 0px;
+  right: 0px;*/
+}
+
+.viewer_1 {
+transform: rotateY(0deg) translateZ(250px);
+/*   -webkit-transform: skew(0deg, 25deg); */
+  background: var(--card-bg-color);
+}
+.viewer_2 {
+  transform: rotateY(45deg) translateZ(250px);
+  background: var(--card-bg-color);
+}
+.viewer_3 {
+  transform: rotateY(90deg) translateZ(250px);
+  background: var(--card-bg-color);
+}
+.viewer_4 {
+  transform: rotateY(135deg) translateZ(250px);
+  background: var(--card-bg-color);
+}
+
+.viewer_5 {
+  transform: rotateY(180deg) translateZ(250px);
+  background: var(--card-bg-color);
+} 
+
+.viewer_6 {
+  transform: rotateY(225deg) translateZ(250px);
+  background: var(--card-bg-color);
+}
+
+.viewer_7 {
+  transform: rotateY(270deg) translateZ(250px);
+  background: var(--card-bg-color);
+}
+
+.viewer_8 {
+  transform: rotateY(315deg) translateZ(250px);
+  background: var(--card-bg-color);
+}
+
+/*.next, .prev {
+  color: #444;
+  position: absolute;
+  top: 100px;
+  padding: 1em 2em;
+  cursor: pointer;
+  background: #CCC;
+  border-radius: 5px;
+  border-top: 1px solid #FFF;
+  box-shadow: 0 5px 0 #999;
+  transition: box-shadow 0.1s, top 0.1s;
+}
+.next:hover, .prev:hover { color: #000; }
+.next:active, .prev:active {
+  top: 104px;
+  box-shadow: 0 1px 0 #999;
+}
+.next { 
+  right: 5em;
+  
+
+}
+.prev { left: 5em; }
+  */
+
+
+
+
+
+.carousel-right-btn, .carousel-left-btn {
+  z-index: 2;
+  position: relative;
+  bottom: 200px;
+  z-index: 1;
+  color: var(--secondary-color);
+  /*left: 200%;*/
+  /*top: 30%;*/
+  
+  /*z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;*/
+
+}
+
+.carousel-right-btn:hover, .carousel-left-btn:hover {
+  /*border: 1px solid black;*/
+  cursor: pointer;
+  color: white;
+
+}
+
+
+.btm-shadow {
+  box-shadow: 0 20px 40px -20px black;
+}
+
+
+.arnis-list-section {
+  background-image: linear-gradient(to bottom, var(--primary-color), black);
+}
+
+.floor-container {
+  /*background-color: black;*/
+  z-index: -3;
+  /*margin: 0 auto;*/
+  /*transform-style: preserve-3d;*/
+  perspective: 600px;
+}
+
+.floor {
+  width: 100%;
+  height: 100%;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  /*margin: 0 auto;*/
+  
+  /*position: fixed;*/
+    /*top: 100px;
+    left: 100px;*/
+  /*width: 100px; 
+  height: 100px;*/
+  /*background: */
+  /*background-image: url('../images/checkered-1280x1280.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;*/
+  /*transform: scale(3);*/
+  /*transform-style: */
+  transform: scale(3) rotateX(60deg) translateY(-200px);
+ /*translateY(-1000px);*/
+}
+
+
+
+/*position: absolute;*/
+  /*top: 30%;*/
+  /*left: 15%;*/
+  /*display: inline-block;*/
+  /*width: 100%; */
+  /*border: 3px solid ;*/
+  /*mix-blend-mode: initial;*/
+
+.arnis-system-info-container {
+
+  border-radius: 10px;
+  height: 220px;
+  background-color: var(--secondary-color);
+  opacity: .90;
+
+  padding: 20px;
+  /*position: absolute;*/
+  /*background-color: #3a3a3a;*/
+  /*opacity: .90;*/
+  /*color: white;*/
+  /*display: inline-block;*/
+  
+
+
+  /*color: black;*/
+  
+}
+
+.arnis-system-title {
+  /*background-color: var(--primary-color);*/
+  padding: 2px;
+  /*border-bottom: double black;*/
+}
+
+.arnis-system-info-container .carousel-inner {
+  overflow-y: auto !important; 
+  max-height: 120px;
+}
+
+/*Onsite images - custom modal*/
+
+.arnis-list-section .custom-modal {
+  display: none; 
+  position: fixed; 
+  z-index: 2; 
+  padding-top: 30px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.9); 
+}
+
+.arnis-list-section .custom-modal .custom-modal-content {
+  margin: auto;
+  display: block;
+  /*height: 70%;*/
+  width: 80%;
+  max-width: 700px;
+  border-radius: 5px;
+
+}
+
+.arnis-list-section #onsiteImageModal img:hover {
+  transition: 0.3s;
+  opacity: .8;
+}
+
+.arnis-list-section .custom-modal .close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.arnis-list-section .custom-modal .custom-modal-content {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+
+@-moz-keyframes zoom {
+  from {-moz-transform:scale(0)} 
+  to {-moz-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+
+/*end Onsite images - custom modal*/
+
+.arnis-system-info-container .carousel-inner .carousel-item .onsite-images {
+
+}
+
+
+.arnis-system-info-nav > * {
+  line-height: 1.5em;
+  padding: 0 10px 0 10px;
+}
+
+
+.arnis-system-info-nav > button > a {
+  color: white !important;
+}
+
+
+.arnis-system-info-container .carousel {
+  max-height: 200px;
+}
+
+
+
+.arnis-system-info-container .card-body .show-more-info,  
+.arnis-system-info-container .card-body .hide-more-info
+
+{
+  cursor: pointer;
+  color: white;
+  /*background-color: black;*/
+}
+
+.arnis-system-info-container .card-body .card-title {
+  
+  color: white;
+  /*border-bottom: 1px solid white ;*/
+
+  /*background-color: black;*/
+}
+
+
+.arnis-system-info-container .card-body .show-more-info:hover,
+.arnis-system-info-container .card-body .hide-more-info:hover 
+{
+  color: blue;
+}
+
+
+.arnis-system-info-container .img-container img {
+  /*background-color: white !important;*/
+  
+}
+
+
+
+/*.arnis-system-info-container .card {
+  height: 1000px;
+}*/
+
