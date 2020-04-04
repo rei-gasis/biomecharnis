@@ -33,10 +33,8 @@ angular.module('arnisApp', ['ngSanitize'])
 
                             //set data for first arnis system
                             $scope.arnisSelected = $scope.arnisList[0];
-                            getOnsiteImage1($scope.arnisSelected.acf.onsite_image_1);
-                            getOnsiteImage2($scope.arnisSelected.acf.onsite_image_2);
-                            getOnsiteImage3($scope.arnisSelected.acf.onsite_image_3);
-                            getGMData($scope.arnisSelected.id);
+                            getOnsiteImages($scope.arnisSelected);
+                            getGMData($scope.arnisList[0]);
 
                             // console.log($scope.arnisSelected)
 
@@ -70,20 +68,21 @@ angular.module('arnisApp', ['ngSanitize'])
 
 
 
-                function getGMData($arnisId) {
-                    // console.log($arnisId)
-                    // let gm = new Object();
-                    if ($arnisId) {
-                        $http.get($baseUrl + '/wp-json/wp/v2/arnis_system?parent=' + $arnisId)
+                function getGMData(arnis) {
+                    // console.log(arnis)
+                    
+                    if (arnis) {
+                        
+                        $http.get($baseUrl + '/wp-json/wp/v2/arnis_system?parent=' + arnis.id)
                             .then(
                                 async response => {
-                                        $scope.arnisSelected.GMData = await response.data;
+                                        arnis.GMData = await response.data;
 
                                         // console.log($scope.arnisSelected.GMData)
                                         /*Fetch Image URL*/
-                                        angular.forEach($scope.arnisSelected.GMData, function(gm) {
+                                        angular.forEach(arnis.GMData, function(gm) {
                                             // console.log('looping gm data')
-                                            if (gm.acf.grandmaster_image[0])
+                                            if(gm.acf.grandmaster_image[0])
                                                 $http.get($requestMediaUrl + gm.acf.grandmaster_image[0])
                                                 .then(function(response) {
                                                     // console.log('gm image url fetched')
@@ -107,12 +106,10 @@ angular.module('arnisApp', ['ngSanitize'])
                 }
 
 
-                function getOnsiteImage1($id) {
-                    if ($id) {
-                        $http.get($requestMediaUrl + $id)
+                function getOnsiteImages(arnis) {
+                    if (arnis) {
+                        $http.get($requestMediaUrl + arnis.acf.onsite_image_1)
                             .then(function(response) {
-
-                                // console.log(response)
                                 if (!angular.isUndefined(response.data.guid))
                                     $scope.arnisSelected.onsiteImage1 = response.data.guid.rendered;
                                 else
@@ -120,54 +117,81 @@ angular.module('arnisApp', ['ngSanitize'])
 
 
                             }, function(error) {
+                                $scope.arnisSelected.onsiteImage1 = '';
                                 console.log(error);
                             })
-                    } else {
-                        // console.log('no img id')
-                        $scope.arnisSelected.onsiteImage1 = '';
-                    }
-                }
 
-                function getOnsiteImage2($id) {
-                    if ($id) {
-                        $http.get($requestMediaUrl + $id)
+                        //2
+                        $http.get($requestMediaUrl + arnis.acf.onsite_image_2)
                             .then(function(response) {
                                 if (!angular.isUndefined(response.data.guid))
                                     $scope.arnisSelected.onsiteImage2 = response.data.guid.rendered;
                                 else
                                     $scope.arnisSelected.onsiteImage2 = '';
+
+
                             }, function(error) {
+                                $scope.arnisSelected.onsiteImage2 = '';
                                 console.log(error);
                             })
-                    } else {
-                        $scope.arnisSelected.onsiteImage2 = '';
-                    }
-                }
 
-
-
-
-                function getOnsiteImage3($id) {
-                    if ($id) {
-                        $http.get($requestMediaUrl + $id)
+                        //3
+                        $http.get($requestMediaUrl + arnis.acf.onsite_image_3)
                             .then(function(response) {
                                 if (!angular.isUndefined(response.data.guid))
                                     $scope.arnisSelected.onsiteImage3 = response.data.guid.rendered;
                                 else
                                     $scope.arnisSelected.onsiteImage3 = '';
+
                             }, function(error) {
+                                $scope.arnisSelected.onsiteImage3 = '';
                                 console.log(error);
                             })
                     } else {
-                        $scope.arnisSelected.onsiteImage3 = '';
+                        // $scope.arnisSelected.onsiteImage1 = '';
+                        // $scope.arnisSelected.onsiteImage2 = '';
+                        // $scope.arnisSelected.onsiteImage3 = '';
                     }
-
                 }
 
-                $scope.setSelectedOnsiteImage = function(img) {
-                    // console.log('clicked');
-                    $scope.selectedOnsiteImage = img;
+                // function getOnsiteImage2($id) {
+                //     if ($id) {
+                //         $http.get($requestMediaUrl + $id)
+                //             .then(function(response) {
+                //                 if (!angular.isUndefined(response.data.guid))
+                //                     $scope.arnisSelected.onsiteImage2 = response.data.guid.rendered;
+                //                 else
+                //                     $scope.arnisSelected.onsiteImage2 = '';
+                //             }, function(error) {
+                //                 console.log(error);
+                //             })
+                //     } else {
+                //         $scope.arnisSelected.onsiteImage2 = '';
+                //     }
+                // }
 
+
+
+
+                // function getOnsiteImage3($id) {
+                //     if ($id) {
+                //         $http.get($requestMediaUrl + $id)
+                //             .then(function(response) {
+                //                 if (!angular.isUndefined(response.data.guid))
+                //                     $scope.arnisSelected.onsiteImage3 = response.data.guid.rendered;
+                //                 else
+                //                     $scope.arnisSelected.onsiteImage3 = '';
+                //             }, function(error) {
+                //                 console.log(error);
+                //             })
+                //     } else {
+                //         $scope.arnisSelected.onsiteImage3 = '';
+                //     }
+
+                // }
+
+                $scope.setSelectedOnsiteImage = function(img) {
+                    $scope.selectedOnsiteImage = img;
 
                     $modal = $('.arnis-list-section #onsiteImageModal');
                     $modal.css('display', 'block');
@@ -210,23 +234,12 @@ angular.module('arnisApp', ['ngSanitize'])
                         currentArnisSystem = currentArnisSystem + 1;
                     }
 
-                    $scope.arnisSelected = $scope.arnisList[currentArnisSystem];
+                    // $scope.arnisSelected = $scope.arnisList[currentArnisSystem];
 
 
+                    setArnisInfo($scope.arnisList[currentArnisSystem]);
 
-                    // let getOnsiteImages = async() => {
-                    // 	$scope.arnisSelected.onsiteImage1 = getMediaUrl($scope.arnisSelected.acf.onsite_image_1)
-                    // 	$scope.arnisSelected.onsiteImage2 = getMediaUrl($scope.arnisSelected.acf.onsite_image_2)
-                    // 	$scope.arnisSelected.onsiteImage3 = getMediaUrl($scope.arnisSelected.acf.onsite_image_3)
-                    // 		result = await Promise.all([$scope.arnisSelected.onsite_image_1
-                    // 								   ,$scope.arnisSelected.onsite_image_2
-                    // 								   ,$scope.arnisSelected.onsite_image_3])
-                    // 		return result;
-                    // }
-
-                    // console.log($scope.arnisList[currentArnisSystem])
-
-                    setArnisInfo();
+                    // console.log('currentArnisSystem:', currentArnisSystem)
 
 
                     carousel.css({
@@ -241,24 +254,11 @@ angular.module('arnisApp', ['ngSanitize'])
                 }
 
 
-                function setArnisInfo(){
-                	if (!$scope.arnisList[currentArnisSystem].onsiteImage1 || typeof $scope.arnisList[currentArnisSystem].onsiteImage1 === undefined)
-                        getOnsiteImage1($scope.arnisSelected.acf.onsite_image_1);
-
-                    if (!$scope.arnisList[currentArnisSystem].onsiteImage2 || typeof $scope.arnisList[currentArnisSystem].onsiteImage2 === undefined)
-                        getOnsiteImage2($scope.arnisSelected.acf.onsite_image_2);
-
-                    if (!$scope.arnisList[currentArnisSystem].onsiteImage3 || typeof $scope.arnisList[currentArnisSystem].onsiteImage3 === undefined)
-                        getOnsiteImage3($scope.arnisSelected.acf.onsite_image_3);
-
-                    if (!$scope.arnisList[currentArnisSystem].GMData || typeof $scope.arnisList[currentArnisSystem].GMData === undefined)
-                        getGMData($scope.arnisList[currentArnisSystem].id);
-                }
 
 
                 $scope.prevArnis = function() {
 
-
+                    // console.log('currentArnisSystem:', currentArnisSystem)
                     currdeg = currdeg + 45;
 
                     if (currentArnisSystem < 1) {
@@ -267,13 +267,10 @@ angular.module('arnisApp', ['ngSanitize'])
                         currentArnisSystem = currentArnisSystem - 1;
                     }
 
-                    $scope.arnisSelected = $scope.arnisList[currentArnisSystem];
-
-                    setArnisInfo();
-                    
+                    // $scope.arnisSelected = $scope.arnisList[currentArnisSystem];
 
 
-                    // console.log($scope.arnisList[currentArnisSystem]);
+                    setArnisInfo($scope.arnisList[currentArnisSystem]);
 
 
                     carousel.css({
@@ -283,7 +280,57 @@ angular.module('arnisApp', ['ngSanitize'])
                         "transform": "rotateY(" + currdeg + "deg)"
                     });
 
+                    // carousel.css({
+                    //     "-webkit-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                    //     "-moz-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                    //     "-o-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                    //     "transform": "rotate3d(0, 1, 0, " + deg + "deg)"
+                    // });
+
                 }
+
+
+                //rotate carousel and show info
+                $scope.viewArnisSystemInfo = function(arnis){
+                    //get position, sets 0-7
+                    var position = arnis.viewerClass.substr(-1) - 1; 
+                    var deg = position * (-45);
+
+                    setArnisInfo($scope.arnisList[position]);
+
+                    currentArnisSystem = position;
+                    currdeg = deg;
+
+
+
+
+                    carousel.css({
+                        "-webkit-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                        "-moz-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                        "-o-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                        "transform": "rotate3d(0, 1, 0, " + deg + "deg)"
+                    });
+
+                    
+                }
+
+
+                function setArnisInfo(arnis){
+
+
+                    getOnsiteImages(arnis);
+
+                    if (!arnis.GMData || typeof arnis.GMData === undefined)
+                        getGMData(arnis);
+
+                    $scope.arnisSelected = arnis;
+
+
+                    // console.log($scope.arnisSelected.onsiteImage1)
+                    // console.log($scope.arnisSelected.onsiteImage2)
+                    // console.log($scope.arnisSelected.onsiteImage3)
+                }
+
 
                 /*Arnis info controls*/
 
@@ -302,13 +349,12 @@ angular.module('arnisApp', ['ngSanitize'])
                 })
 
                 $arnisInfoNext.on('click', function() {
+
                     $arnisInfoCarousel.carousel('next');
 
-                    // $scope.activeCarouselIdx = getActiveCarouselIdx();
-
-                    // console.log(getActiveCarouselIdx())
-
                 })
+
+
 
 
                 // let getActiveCarouselIdx = function(){
@@ -376,8 +422,6 @@ angular.module('arnisApp', ['ngSanitize'])
 
 
 
-
-
             });
 
 
@@ -391,4 +435,65 @@ $(function() {
     $('[data-toggle="tooltip"]').tooltip()
 
 })
+
+
+$infoContainer = $('.arnis-system-info-container');
+$infoContentContainer = $('.arnis-system-info-container .carousel-inner');
+
+
+
+$infoContainer.hover(function(){
+                    // console.log($infoContainer.css('height'))
+                    // if($infoContainer.css('height') == '220px'){
+                    
+                    // if(!animationDone){
+                        $infoContainer.animate({
+                            height: "+=150px",
+                            marginTop: "-=150px"
+                            }, 
+                            400, 
+                            // 'linear', 
+                            // null,
+                            // null,
+                            // null,
+                            // function(){
+                            //     console.log('animating')
+                            //     animationDone = false;
+                            // },
+                            function(){
+                                // console.log('animationDone')
+                                animationDone = true;
+                            }
+                        )
+
+                        // console.log('hovered')
+                    // }
+                        // console.log($infoContentContainer.css('height'))
+                        $infoContentContainer.css('height','+=150px');
+                        $infoContentContainer.css('maxHeight','+=150px');
+
+                        // $infoContentContainer.maxHeight('+=100');
+                        // $infoContentContainer.css('maxHeight', $infoContentContainer.css('maxHeight') + 100)
+                        // $infoContentContainer.animate({
+                        //     height: "+=100",
+                        //     maxHeight: "+=100"
+                        //     // marginTop: "-=100"
+                        // }, 400)
+                     }   
+                    
+                    ,function() {
+                    
+                        $infoContainer.animate({
+                            height: "-=150",
+                            marginTop: "+=150"
+                            }, 
+                            400, 
+                        )
+
+
+                        $infoContentContainer.css('height','-=150');
+                        $infoContentContainer.css('maxHeight','-=150');
+
+                        
+                    })
 

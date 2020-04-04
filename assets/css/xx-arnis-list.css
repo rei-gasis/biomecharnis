@@ -5,11 +5,79 @@
 }
 
 
+.list-navigation-container {
+  height: 10vh;
+}
 
+.arnis-list-carousel-row {
+  height: 40vh;
+}
+
+.arnis-list-container {
+  height: 40vh; 
+  display: block !important;
+
+}
+
+.list-navigation-container .nav {
+  align-items: center;
+}
+
+.list-navigation-container .nav li:first-child {
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+  /*padding-left: 5%;*/
+}
+
+.list-navigation-container .nav li:last-child {
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+  /*padding-right: 5%;*/
+}
+
+.list-navigation-container .nav  li {
+  background-color: var(--secondary-color);
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  cursor: pointer;
+  margin: 0px 2px;
+}
+
+.list-navigation-container .nav  li:hover,
+.list-navigation-container .nav  li:focus
+{
+  transition: 0.6;
+  background-color: white;
+  color: black;
+}
+
+
+.list-navigation-container .nav button {
+  background-color: var(--secondary-color);
+  color: white;
+  margin: 0px 2px;
+}
+
+.list-navigation-container .nav button:hover {
+  transition: 0.6;
+  background-color: white;
+  color: black;
+}
 
 .arnis-list-section .carousel-container {
   z-index: 1;
-  margin: 80px auto;
+  margin: 0 auto;
+  margin-top: 30px;
   width: 200px;
   height: 200px;
   position: relative;
@@ -121,9 +189,9 @@ transform: rotateY(0deg) translateZ(250px);
 
 
 .carousel-right-btn, .carousel-left-btn {
-  z-index: 2;
+  z-index: 10;
   position: relative;
-  bottom: 200px;
+  bottom: 120px;
   z-index: 1;
   color: var(--secondary-color);
   /*left: 200%;*/
@@ -199,6 +267,8 @@ transform: rotateY(0deg) translateZ(250px);
   /*mix-blend-mode: initial;*/
 
 .arnis-system-info-container {
+  position: relative;
+
 
   border-radius: 10px;
   height: 220px;
@@ -206,6 +276,8 @@ transform: rotateY(0deg) translateZ(250px);
   opacity: .90;
 
   padding: 20px;
+  z-index: 5;
+  
   /*position: absolute;*/
   /*background-color: #3a3a3a;*/
   /*opacity: .90;*/
@@ -220,12 +292,13 @@ transform: rotateY(0deg) translateZ(250px);
 
 .arnis-system-title {
   /*background-color: var(--primary-color);*/
-  padding: 2px;
+  /*padding: 2px;*/
   /*border-bottom: double black;*/
 }
 
 .arnis-system-info-container .carousel-inner {
   overflow-y: auto !important; 
+  height: 120px;
   max-height: 120px;
 }
 
@@ -234,7 +307,7 @@ transform: rotateY(0deg) translateZ(250px);
 .arnis-list-section .custom-modal {
   display: none; 
   position: fixed; 
-  z-index: 2; 
+  z-index: 999; 
   padding-top: 30px; 
   left: 0;
   top: 0;

@@ -71,10 +71,13 @@
 	<div class="cube-container">
 		<div id="sections">
 			<section class="container-fluid home-section">
-				<div class="row h-33">
+				<!-- <div class="row h-20" style="height: 20%; max-height: 20%;">
 					
-				</div>
-				<article class="row h-33">
+				</div> -->
+				<article class="row h-100">
+					<div class="bg-container">
+						
+					</div>
 					<div class="col-3">
 					</div>
 					<div class="mid-box col-6">
@@ -94,14 +97,14 @@
 					</div>
 						
 				</article>
-				<div class="row h-33 page-navigation-container justify-content-between">
+				<!-- <div class="row h-20 page-navigation-container justify-content-between">
 						<button class="nav-left">
 						  <span data-title="PREV"><i class="fas fa-angle-left"></i></span>
 						</button>
 						<button class=" nav-right">
 						  <span data-title="NEXT"><i class="fas fa-angle-right"></i></span>
 						</button>
-				</div>
+				</div> -->
 			</section> 
 
 
@@ -118,12 +121,14 @@
 						  <span data-title="NEXT"><i class="fas fa-angle-right"></i></span>
 						</button>
 				</div>
-				<!-- <div class="row h-10">
-					<div class="col-12 text-center mt-2">
-						<h1 class="page-title">Arnis Systems</h1>
-					</div>
-				</div> -->
-				<div class="row h-50">
+				<div class="row list-navigation-container justify-content-center">
+					<ul class="nav flex-row">
+						<li class="nav-item" ng-repeat="arnis in arnisList" ng-click="viewArnisSystemInfo(arnis)">
+							{{arnis.title.rendered}}
+						</li>
+					</ul>
+				</div>
+				<div class="row arnis-list-carousel-row">
 					<div class="offset-2 col-8 clearfix">
 						<div class="carousel-container">
 						    <div class="carousel">
@@ -151,13 +156,12 @@
 					</div>
 					
 				</div>
-				<div class="row h-40 mt-3">
+				<div class="row arnis-list-container mt-3">
 					<div class="offset-2 col-8 text-center">
 						<div class="arnis-system-info-container carousel slide clearfix" data-interval="false" data-ride="carousel">
 							<div class="arnis-system-info-header mb-1 d-flex justify-content-between">
 								<div class="arnis-system-title">
 									<h3>{{arnisSelected.title.rendered}}</h3>
-									
 								</div>
 								<div class="arnis-system-info-nav btn-group">	
 									<button class="btn btn-primary view-arnis-style" data-toggle="tooltip" data-placement="top" title="View"><a href="{{arnisSelected.GMData[0].link}}"><i class="fas fa-eye"></i></a></button>
@@ -327,23 +331,27 @@
 							<!-- </div> -->
 						</div>
 						<div class="col-1 d-flex flex-column align-self-center">
-							<ul class="nav nav-pills flex-column" id="biomecharnis-tab">
+							<ul class="nav flex-column" id="biomecharnis-tab">
 							  <li class="nav-item">
-							    <a class="nav-link active" id="main-content-tab" data-toggle="tab" href="#main-content">1</a>
+							  	<a class="nav-link active" id="main-content-tab" data-toggle="tab" href="#main-content">
+							    </a>
 							  </li>
 							  <li class="nav-item">
-							    <a class="nav-link " id="content-1-tab" data-toggle="tab" href="#content-1">2</a>
+							  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-1">
+							    </a>
 							  </li>
 							  <li class="nav-item">
-							    <a class="nav-link " id="content-2-tab" data-toggle="tab" href="#content-2">3</a>
+							  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-2">
+							    </a>
 							  </li>
 							  <li class="nav-item">
-							    <a class="nav-link " id="content-3-tab" data-toggle="tab" href="#content-3">4</a>
+							  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-3">
+							    </a>
 							  </li>
 							  <li class="nav-item">
-							    <a class="nav-link " id="content-4-tab" data-toggle="tab" href="#content-4">5</a>
+							  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-4">
+							    </a>
 							  </li>
-							  
 							</ul>
 						</div>
 					</div>
@@ -371,7 +379,7 @@
 			</section>
 
 			<section class="container-fluid filler-2">
-				<div class="row h-10 page-navigation-container justify-content-between">
+				<!-- <div class="row h-10 page-navigation-container justify-content-between">
 						<button class="nav-left">
 						  <span data-title="PREV"><i class="fas fa-angle-left"></i></span>
 						</button>
@@ -380,8 +388,8 @@
 						<button class=" nav-right">
 						  <span data-title="NEXT"><i class="fas fa-angle-right"></i></span>
 						</button>
-				</div>
-				<div class="row h-90 justify-content-between">
+				</div> -->
+				<div class="row h-100 justify-content-center">
 					<img class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/coming-soon.png"/>
 				</div>
 			</section>
