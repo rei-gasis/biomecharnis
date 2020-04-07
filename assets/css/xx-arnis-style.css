@@ -18,11 +18,15 @@ body {
 
 
 .arnis-list-section .carousel-container {
+  position: relative;
+  top: 150px;
+
   z-index: 1;
-  margin: 80px auto;
+  margin: 0 auto;
+  
   width: var(--card-width);
   height: var(--card-height);
-  position: relative;
+  
   perspective: 1000px;
 
 }
@@ -88,7 +92,8 @@ transform: rotateY(0deg) translateZ(var(--card-width));
 .carousel-right-btn, .carousel-left-btn {
   z-index: 2;
   position: relative;
-  bottom: 200px;
+  top: 0;
+  /*bottom: 300px;*/
   z-index: 1;
   color: var(--secondary-color);
   /*left: 200%;*/
@@ -124,41 +129,27 @@ transform: rotateY(0deg) translateZ(var(--card-width));
 
 
 .arnis-list-section {
-  background-image: linear-gradient(to bottom, var(--primary-color), black);
+  background-image: linear-gradient(to bottom, black, var(--primary-color));
 }
 
 .floor-container {
-  /*background-color: black;*/
-  z-index: -3;
-  /*margin: 0 auto;*/
-  /*transform-style: preserve-3d;*/
+  
+  position: relative;
+  bottom: 0;
+
+  z-index: 0;
   perspective: 600px;
+
+  /*position: absolute;
+  left: 50%;
+  bottom: 50%;*/
 }
 
-.floor {
-  width: 100%;
-  height: 100%;
+.floor-container #grid-floor{
+  display:block; 
+  margin: auto;
+  transform: rotateX(60deg) scale(4);
 
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  /*margin: 0 auto;*/
-  
-  /*position: fixed;*/
-    /*top: 100px;
-    left: 100px;*/
-  /*width: 100px; 
-  height: 100px;*/
-  /*background: */
-  /*background-image: url('../images/checkered-1280x1280.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;*/
-  /*transform: scale(3);*/
-  /*transform-style: */
-  transform: scale(5) rotateX(60deg);/* translateY();*/
- /*translateY(-1000px);*/
 }
 
 
@@ -292,6 +283,7 @@ transform: rotateY(0deg) translateZ(var(--card-width));
 
 
 .arnis-style-info-container.custom-modal .custom-modal-content .info-content .close {
+  position: fixed;
   margin-right: -30px;
 }
 
@@ -365,3 +357,56 @@ transform: rotateY(0deg) translateZ(var(--card-width));
   height: 1000px;
 }*/
 
+
+
+
+.list-navigation-container {
+  position: relative;
+  top: 30px;
+}
+
+
+.list-navigation-container .nav {
+  align-items: center;
+}
+
+.list-navigation-container .nav li:first-child {
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+  /*padding-left: 5%;*/
+}
+
+.list-navigation-container .nav li:last-child {
+  clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+  /*padding-right: 5%;*/
+}
+
+.list-navigation-container .nav  li {
+  background-color: var(--secondary-color);
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  cursor: pointer;
+  margin: 0px 2px;
+}
+
+
+
+.list-navigation-container .nav  li:hover,
+.list-navigation-container .nav  li:focus,
+.list-navigation-container .nav  li.active
+{
+  transition: 0.6;
+  background-color: white;
+  color: black;
+}
