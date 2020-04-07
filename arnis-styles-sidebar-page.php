@@ -45,13 +45,22 @@
 
 
 	<section class="container-fluid arnis-list-section h-100" ng-controller="arnisStyleController">
-		<!-- <div class="row h-10">
-			<div class="col-12 text-center mt-2">
-				<h1>{{arnis_style}}</h1>
-			</div>
-		</div> -->
-		<div class="row h-90 mt-5">
+		
+		<div class="row" style="height: 100vh;">
 			<div class="offset-2 col-8">
+				<div class="list-navigation-container">
+					<ul class="nav flex-row d-flex flex-row justify-content-center">
+						<li class="nav-item" ng-click="view2D($event)">
+							2D
+						</li>
+						<li class="nav-item active" ng-click="view3D($event)">
+							3D
+						</li>
+						<li class="nav-item" ng-click="viewSideBySide($event)">
+							SideBySide
+						</li>
+					</ul>		
+				</div>
 				<div class="carousel-container">
 					<div class="carousel">
 
@@ -81,11 +90,14 @@
 					</h1>
 				</div>
 				<div class="floor-container d-flex flex-row align-items-center">
-		  			<div class="floor">
-						<img class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/checkered-1280x1280.jpg">
-					</div>	
-				</div>
-
+		  			<svg id="grid-floor" width="100%" height="100%" xml	ns="http://www.w3.org/2000/svg">
+					    <defs>
+					      <pattern id="smallGrid" width="22" height="22" patternUnits="userSpaceOnUse">
+					        <path d="M 22 0 L 0 0 0 22" fill="none" stroke="rgba(0, 0, 0, 1)" stroke-width="2" />
+					      </pattern></defs>
+					    <rect width="100%" height="100%" fill="url(#smallGrid)" />
+					</svg>	
+		  		</div>
 			</div>
 			
 		</div>
@@ -111,10 +123,10 @@
 					<h3>{{arnisSystem.title.rendered}}</h3>
 					<img class="img-fluid " ng-src="{{arnisSystem.thumbnail}}">
 
-					<ul class="sidebar-nav">
-	                    <li> <a href="#about-the-style">About the Style</a></li>
-	                    <li> <a href="#grandmaster">Grandmaster</a></li>
-	                    <li> <a href="#about-the-system">About the System</a></li>
+					<ul class="sidebar-nav nav">
+	                    <li class="nav-item"> <a href="#about-the-style">About the Style</a></li>
+	                    <li class="nav-item"> <a href="#grandmaster">Grandmaster</a></li>
+	                    <li class="nav-item"> <a href="#about-the-system">About the System</a></li>
 	                </ul>
 				</aside>
 				

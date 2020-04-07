@@ -1,7 +1,7 @@
 angular.module('arnisApp', ['ngSanitize'])
     .controller('arnisStyleController', function($scope, $http, $q, $sce) {
 
-    	$baseUrl = 'http://localhost/biomecharnis';
+    	$baseUrl = 'http://localhost/biomecharnis/';
     	$hrefSegments = window.location.href.split('/')
 		$slug = $hrefSegments.slice(-2, -1)[0]
 		$requestMediaUrl = 'http://localhost/biomecharnis/wp-json/wp/v2/media/';
@@ -165,9 +165,7 @@ angular.module('arnisApp', ['ngSanitize'])
 				$vidOneContainer.fadeOut(1000);
 				$vidTwoContainer.fadeOut(1000);
 
-
 				waitPlayBtn('.arnis-list-section .carousel-container .viewer .marmosetContainer #marmosetUI > div > div > input[title="animationplay1x.png"]', 1000)
-
 				waitPauseBtn('.arnis-list-section .carousel-container .viewer .marmosetContainer #marmosetUI > div > div > input[title="animationpause1x.png"]', 1000)
 				
 			}
@@ -334,6 +332,72 @@ angular.module('arnisApp', ['ngSanitize'])
 		  
 		})
 
+
+        $scope.view2D = function($event){
+
+
+        	let position = 1; //
+            let deg = position * (60);
+			
+			currViewer = 0;
+            currdeg = deg;
+
+
+
+
+            carousel.css({
+                "-webkit-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "-moz-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "-o-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "transform": "rotate3d(0, 1, 0, " + deg + "deg)"
+            });
+
+
+        	$($event.currentTarget).parent().children().removeClass('active')
+            $($event.currentTarget).addClass('active')
+        }
+
+        $scope.view3D = function($event){
+        	let position = 2; //
+            let deg = position * (0); //
+			
+			currViewer = 1; //
+            currdeg = deg;
+
+
+            carousel.css({
+                "-webkit-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "-moz-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "-o-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "transform": "rotate3d(0, 1, 0, " + deg + "deg)"
+            });
+
+
+        	$($event.currentTarget).parent().children().removeClass('active')
+            $($event.currentTarget).addClass('active')
+        }
+
+        
+
+
+        $scope.viewSideBySide = function($event){
+        	let position = 1; 
+            let deg = position * (-60); //
+			
+			currViewer = 2; //
+            currdeg = deg;
+
+
+            carousel.css({
+                "-webkit-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "-moz-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "-o-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
+                "transform": "rotate3d(0, 1, 0, " + deg + "deg)"
+            });
+
+        	$($event.currentTarget).parent().children().removeClass('active')
+            $($event.currentTarget).addClass('active')
+        }
 
 
 
