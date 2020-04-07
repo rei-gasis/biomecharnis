@@ -31,30 +31,6 @@
 	
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>BiomechArnis | Motion Capture of Filipino Martial Arts</title>
-
-	<!-- for scroll page-->
-	<script>
-	    document.documentElement.className = "js";
-	    var supportsCssVars = function() {
-	        var e,
-	            t = document.createElement("style");
-	        return (
-	            (t.innerHTML = "root: { --tmp-var: bold; }"),
-	            document.head.appendChild(t),
-	            (e = !!(
-	                window.CSS &&
-	                window.CSS.supports &&
-	                window.CSS.supports("font-weight", "var(--tmp-var)")
-	            )),
-	            t.parentNode.removeChild(t),
-	            e
-	        );
-	    };
-	    supportsCssVars() ||
-	        alert(
-	            "Please view this demo in a modern browser that supports CSS Variables."
-	        );
-	    </script>
 </head>
 <body ng-app="arnisApp">
 	
@@ -78,9 +54,8 @@
 					<div class="bg-container">
 						
 					</div>
-					<div class="col-3">
-					</div>
-					<div class="mid-box col-6">
+					
+					<div class="mid-box offset-3 col-6">
 						<div class="d-flex flex-column w-100 align-items-center">
 							<div class="row py-3">
 								<div class="col-3 d-flex align-self-center pl-4">
@@ -91,25 +66,24 @@
 									<h5>Motion Capture of Filipino Martial Arts</h5>		
 								</div>
 							</div>
+
 						</div>
 					</div>
-					<div class="col-3">
-					</div>
+					
 						
 				</article>
-				<!-- <div class="row h-20 page-navigation-container justify-content-between">
-						<button class="nav-left">
-						  <span data-title="PREV"><i class="fas fa-angle-left"></i></span>
-						</button>
-						<button class=" nav-right">
-						  <span data-title="NEXT"><i class="fas fa-angle-right"></i></span>
-						</button>
-				</div> -->
+
+				<div class="home-section-btn d-flex justify-content-center">
+					<!-- <div class="col-12 d-flex justify-content-center"> -->
+						<a class="nav-right" href="#main-content"><span>Begin Learning</a>	
+					<!-- </div> -->
+					
+				</div>
 			</section> 
 
 
 			<section class="container-fluid arnis-list-section" ng-controller="arnisListController">
-				<div class="row h-10 page-navigation-container justify-content-between">
+				<div class="row page-navigation-container justify-content-between">
 						<button class="nav-left">
 						  <span data-title="PREV"><i class="fas fa-angle-left"></i></span>
 						</button>
@@ -123,7 +97,7 @@
 				</div>
 				<div class="row list-navigation-container justify-content-center">
 					<ul class="nav flex-row">
-						<li class="nav-item" ng-repeat="arnis in arnisList" ng-click="viewArnisSystemInfo(arnis)">
+						<li class="nav-item" ng-repeat="arnis in arnisList" ng-click="viewArnisSystemInfo(arnis, $event)">
 							{{arnis.title.rendered}}
 						</li>
 					</ul>
@@ -149,10 +123,17 @@
 							</h1>
 						</div>
 						<div class="floor-container d-flex flex-row align-items-center">
-				  			<div class="floor">
-								<img class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/checkered-1280x1280.jpg">
-							</div>	
-					</div>
+				  			<!-- <div class="floor"> -->
+				  				<svg id="grid-floor" width="100%" height="100%" xml	ns="http://www.w3.org/2000/svg">
+								    <defs>
+								      <pattern id="smallGrid" width="22" height="22" patternUnits="userSpaceOnUse">
+								        <path d="M 22 0 L 0 0 0 22" fill="none" stroke="rgba(0, 0, 0, 1)" stroke-width="2" />
+								      </pattern></defs>
+								    <rect width="100%" height="100%" fill="url(#smallGrid)" />
+								</svg>
+								<!-- <img class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/checkered-1280x1280.jpg"> -->
+							<!-- </div>	 -->
+						</div>
 					</div>
 					
 				</div>

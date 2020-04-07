@@ -37,9 +37,8 @@ $().ready(function(){
         if (current === end) {
           pages.velocity(
           {
-            rotateY: [0] },
-
-          {
+            rotateY: [0] 
+          },{
             duration: 0,
             complete: () => {
               current = getCurrentTransform();
@@ -319,7 +318,7 @@ $().ready(function(){
     const navi = new navigation(pagesTrs);
 
 
-    
+
 
 
   $(window).bind('keydown', function(e){
@@ -340,6 +339,12 @@ $().ready(function(){
 
 
   $('.page-navigation-container .nav-right').on('click', function(){
+    pagesTrs.change(0)
+  })
+
+  //for home section
+  $('.home-section-btn .nav-right').on('click', function(){
+    // alert('a')
     pagesTrs.change(0)
   })
 

@@ -290,8 +290,9 @@ angular.module('arnisApp', ['ngSanitize'])
                 }
 
 
+
                 //rotate carousel and show info
-                $scope.viewArnisSystemInfo = function(arnis){
+                $scope.viewArnisSystemInfo = function(arnis, $event){
                     //get position, sets 0-7
                     var position = arnis.viewerClass.substr(-1) - 1; 
                     var deg = position * (-45);
@@ -310,6 +311,10 @@ angular.module('arnisApp', ['ngSanitize'])
                         "-o-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
                         "transform": "rotate3d(0, 1, 0, " + deg + "deg)"
                     });
+
+
+                    $($event.currentTarget).parent().children().removeClass('active')
+                    $($event.currentTarget).addClass('active')
 
                     
                 }
@@ -434,10 +439,7 @@ angular.module('arnisApp', ['ngSanitize'])
 $(function() {
     $('[data-toggle="tooltip"]').tooltip()
 
-})
-
-
-$infoContainer = $('.arnis-system-info-container');
+    $infoContainer = $('.arnis-system-info-container');
 $infoContentContainer = $('.arnis-system-info-container .carousel-inner');
 
 
@@ -451,7 +453,7 @@ $infoContainer.hover(function(){
                             height: "+=150px",
                             marginTop: "-=150px"
                             }, 
-                            400, 
+                            100, 
                             // 'linear', 
                             // null,
                             // null,
@@ -487,13 +489,27 @@ $infoContainer.hover(function(){
                             height: "-=150",
                             marginTop: "+=150"
                             }, 
-                            400, 
+                            100, 
                         )
 
 
                         $infoContentContainer.css('height','-=150');
                         $infoContentContainer.css('maxHeight','-=150');
-
                         
                     })
+
+    //set first arnis tab to active
+    $listNavigationContainer = $('.list-navigation-container')
+    // $listNavigationContainer.find('ul li:first-child').addClass('active')    
+
+    
+    console.log($listNavigationContainer.find('.nav').find('.nav-item'))
+
+})
+
+
+
+
+
+
 

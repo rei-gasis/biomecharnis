@@ -58,13 +58,13 @@ h5 {
 }
 
 
-.home-section .row:nth-child(2) { /*middle*/
+/*.home-section .row:nth-child(2) { 
 	background-image: url('../images/home-section-bg.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
 
-}
+}*/
 
 
 .home-section .mid-box {
@@ -75,9 +75,52 @@ h5 {
 
 
 
-.page-navigation-container {
-	height: 10vh;
+.home-section-btn {
+	position: absolute;
+	left: 25%;
+	right: 25%;
+	bottom: 10%;
 }
+
+.home-section-btn .nav-right {
+   border-radius: 4px;
+   background: linear-gradient(to right, #757575, var(--secondary-color)) !important;
+   border: none;
+   color: #FFFFFF;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 22px;
+   padding: 20px;
+   width: 1; /*FLEX hack*/
+   transition: all 0.4s;
+   cursor: pointer;
+   margin: 5px;
+ }
+
+ .home-section-btn .nav-right span {
+   cursor: pointer;
+   display: inline-block;
+   position: relative;
+   transition: 0.4s;
+ }
+ .home-section-btn .nav-right span:after {
+   content: '\00bb';
+   position: absolute;
+   opacity: 0;
+   top: 0;
+   right: -20px;
+   transition: 0.5s;
+ }
+ .home-section-btn .nav-right:hover span {
+   padding-right: 25px;
+ }
+ .home-section-btn .nav-right:hover span:after {
+   opacity: 1;
+   right: 0;
+ }
+
+
+
 
 .page-navigation-container .custom-btn {
 	padding: 1.4rem 4.2rem;
@@ -168,8 +211,12 @@ h5 {
 
 #sections section.home-section {
 	
+	margin: 0 auto !important;
+	padding: 0 !important;
 	/*height: 100vh;*/
     /*background-color: rgba(255, 217, 0, 0.8);*/
+    -webkit-transform: translateZ(-100vw) rotateY(-180deg);
+    transform: translateZ(-100vw) rotateY(-180deg);
     
 }
 
@@ -181,8 +228,7 @@ h5 {
     
     overflow-y: hidden;
 
-    -webkit-transform: translateZ(-100vw) rotateY(-180deg);
-    transform: translateZ(-100vw) rotateY(-180deg);
+    
 
     
 }
@@ -241,6 +287,7 @@ h5 {
 
   
 }
+
 .page-navigation-container button span{
 	display: flex;
 	justify-content: center;
@@ -459,6 +506,7 @@ h5 {
 	width: 100%;
 	height: 100vh;
 
+	margin: 0px 0px;
 	clip-path: polygon(0 20%, 100% 20%, 100% 80%, 0 80%);
 }
 
