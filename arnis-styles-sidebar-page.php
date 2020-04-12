@@ -9,8 +9,10 @@
 <html>
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 
     <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/bootstrap.min.css"/>
 	
@@ -18,9 +20,6 @@
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/xx-arnis-style.css"/>
 
 	<!-- fontawesome -->
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/> -->
-	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/regular.min.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/all.min.css"/>
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/fontawesome.css"/>
 	
@@ -46,7 +45,7 @@
 
 	<section class="container-fluid arnis-list-section h-100" ng-controller="arnisStyleController">
 		
-		<div class="row" style="height: 100vh;">
+		<div class="row" style="height: 100vh; display: contents;">
 			<div class="offset-2 col-8">
 				<div class="list-navigation-container">
 					<ul class="nav flex-row d-flex flex-row justify-content-center">
@@ -98,6 +97,15 @@
 					    <rect width="100%" height="100%" fill="url(#smallGrid)" />
 					</svg>	
 		  		</div>
+
+		  		<div class="arnis-form-container d-flex flex-row justify-content-around">
+
+		  			<p>Form: {{arnisInfo.title}}</p>
+		  			<p>Model</p>
+		  			
+		  		</div>
+		  		
+
 			</div>
 			
 		</div>
@@ -120,10 +128,10 @@
 		<div class="arnis-style-info-container custom-modal"> <!-- modal background -->
 			<div class="custom-modal-content row">
 				<aside class="info-sidebar col-3">
-					<h3>{{arnisSystem.title.rendered}}</h3>
+					<h3>{{arnisSystem.title}}</h3>
 					<img class="img-fluid " ng-src="{{arnisSystem.thumbnail}}">
 
-					<ul class="sidebar-nav nav">
+					<ul class="sidebar-nav nav flex-column">
 	                    <li class="nav-item"> <a href="#about-the-style">About the Style</a></li>
 	                    <li class="nav-item"> <a href="#grandmaster">Grandmaster</a></li>
 	                    <li class="nav-item"> <a href="#about-the-system">About the System</a></li>

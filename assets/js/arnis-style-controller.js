@@ -11,10 +11,14 @@ angular.module('arnisApp', ['ngSanitize'])
 		
 		// console.log($baseUrl + '/wp-json/wp/v2/arnis_system?slug=' + $slug)
 
+		// const { decodeEntities } = wp.htmlEntities;
 		//get Media
 		$http.get($baseUrl + '/wp-json/wp/v2/arnis_system?slug=' + $slug)
 		.then(response=> {
 			$scope.arnisInfo = response.data[0];
+			// console.log($scope.arnisInfo.title.rendered)
+			// $scope.arnisInfo.title.rendered = encodeURI($scope.arnisInfo.title.rendered);//&#8211;
+			
 			// console.log($arnisInfo)
 
 				//MoCap
