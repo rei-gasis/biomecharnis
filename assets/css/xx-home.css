@@ -24,7 +24,7 @@ body {
 	color: white;
 
 
-    
+
 	
 
 }
@@ -58,6 +58,9 @@ h5 {
 }
 
 
+
+
+
 /*.home-section .row:nth-child(2) { 
 	background-image: url('../images/home-section-bg.png');
 	background-repeat: no-repeat;
@@ -71,6 +74,21 @@ h5 {
 	margin: auto;
 	background-color: #3a3a3a;
 	opacity: .9;
+
+}
+
+.home-section h1,
+.home-section h5
+{
+	text-shadow: -1px -1px #212121
+				,-2px -2px #212121
+				,-3px -3px #212121
+				,-4px -4px #212121
+				,-5px -5px #212121
+				,-6px -6px #212121
+				
+				;
+
 }
 
 
@@ -215,8 +233,7 @@ h5 {
 	padding: 0 !important;
 	/*height: 100vh;*/
     /*background-color: rgba(255, 217, 0, 0.8);*/
-    -webkit-transform: translateZ(-100vw) rotateY(-180deg);
-    transform: translateZ(-100vw) rotateY(-180deg);
+    
     
 }
 
@@ -229,7 +246,8 @@ h5 {
     overflow-y: hidden;
 
     
-
+    -webkit-transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
+    transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
     
 }
 
@@ -238,20 +256,14 @@ h5 {
 	position: relative;
 	width: 100%;
 	height: 100vh;
-	overflow-y: hidden;
+	overflow-y: hidden; /**/
+	scroll-behavior: smooth;
 
-	background-image: radial-gradient(circle at center, #3a3a3a, black);
+	padding: 0 !important;
+	margin: 0 !important;
 
-	background: url('../images/3dbackground.png');
-	background-position: center;
-	background-attachment: fixed;
-	background-size: cover;
-
-
-	-webkit-transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
-    transform: translateX(50vw) translateZ(-50vw) rotateY(90deg);
-
-
+	-webkit-transform: translateZ(-100vw) rotateY(-180deg);
+    transform: translateZ(-100vw) rotateY(-180deg);
 
 
 }
@@ -339,6 +351,20 @@ h5 {
 
 /*section.biomecharnis-section*/
 
+#what-is-biomecharnis {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+
+	background-image: radial-gradient(circle at center, #3a3a3a, black);
+	background: url('../images/3dbackground.png');
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+
+}
+
+
 #biomecharnis-content {
 	overflow: hidden; 
 	max-height: 50vh;
@@ -350,11 +376,12 @@ h5 {
 	position: absolute;
 	width: 100%;
 	height: 100vh;
-	/*transform: translate(25%, 25%);*/
+
 }
 
 .parallax-container #parallax-scene #pl-actual {
 	transform: scale(0.6);
+	/*clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);*/
 }
 
 /*.parallax-container #parallax-scene #pl-background {
@@ -362,12 +389,16 @@ h5 {
 
 }*/
 
+#biomecharnis-tab {
+	opacity: 1 !important;
+}
+
 #biomecharnis-tab li.nav-item {
 	background-color: transparent;
 	margin: 5px 0;
 	
-
 }
+
 
 
 #biomecharnis-tab .nav-item .nav-link {
@@ -380,110 +411,196 @@ h5 {
 	border: 1px solid var(--secondary-color);
 }
 
+#biomecharnis-tab .nav-item .nav-link:hover {
+	border: 1px solid white;
+}
+
 #biomecharnis-tab .nav-item .nav-link.active{
 	background-color: black;
 }
 
-.room__container {
-	position: relative;
-	width: 100%;
-	height: 100vh;	
-	transform-style: preserve-3d;
-}
 
-.room {
-	position: absolute;
-	top: 50%;
+.biomecharnis-section-nav {
+	position: fixed;
+	top: 5%;
 	left: 50%;
-	width: 100vw;
-	height: 100vh;
-	margin: -50vh 0 0 -50vw;
-	pointer-events: none;
-	opacity: 0;
-	transform-style: preserve-3d;
-	perspective: 2000px;
-}
+	transform: translateX(-50%);
+	z-index: 99;
 
-.room--current {
-	pointer-events: auto;
-	opacity: 1;
-}
-
-.room__side {
-	position: absolute;
-	
-	transform-style: preserve-3d;
-
-	
-
-
-}
-
-.room__side--left,
-.room__side--right {
-	width: 1000px; /* depth */
-	height: 100vh;
-	/*background: #dbdbdb;*/
-}
-
-.room__side--back {
-	width: 100vw;
-	height: 100vh;
-	box-shadow: 0 0 0 2px black;
-	transform: translate3d(30%, 0, -1000px) rotate3d(1,0,0,0.1deg) rotate3d(1,0,0,0deg);
-	/* Rotation due to rendering bug in Chrome when loader slides up (images seem cut off) */
-
-	background: url('../images/black-3d-background-1.jpg');
-	background-position: center;
-	background-attachment: all;
-	background-size: cover;
-
+	width: 100%;
 
 	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	padding: 30px;
+	flex-direction: row;
+	justify-content: center;
+
 }
 
-.room__side--right {
-	display: none;
+.biomecharnis-section-nav ul {
+  list-style: none;
+  text-align: center;
+}
+.biomecharnis-section-nav ul li {
+  display: inline-block;
+}
+
+.biomecharnis-section-nav ul li a {
+  position: relative;
+}
+
+.biomecharnis-section-nav ul li a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #aaa;
+  /*font-weight: 800;*/
+  text-transform: uppercase;
+  margin: 0 10px;
+}
+.biomecharnis-section-nav ul li a,
+.biomecharnis-section-nav ul li a:after,
+.biomecharnis-section-nav ul li a:before {
+  transition: all .5s;
+
+}
+.biomecharnis-section-nav ul li a:hover {
+  color: #555;
+}
+
+.biomecharnis-section-nav ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+  border-radius: 25%;
+  /*background-image: radial-gradient(circle at center, #3a3a3a, black);*/
+}
+
+.biomecharnis-section-nav ul li a:after {
+  text-align: left;
+  content: '.';
+  margin: 0;
+  opacity: 0;
+}
+.biomecharnis-section-nav ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+.biomecharnis-section-nav ul li a:hover:after {
+  z-index: -10;
+  animation: fill 1s forwards;
+  -webkit-animation: fill 1s forwards;
+  -moz-animation: fill 1s forwards;
+  opacity: 1;
+}
+
+
+
+
+@-webkit-keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: #333;
+  }
+}
+
+
+
+
+
+
+#the-team {
+	position: relative;
+	overflow-y: auto;
+	/*top: 10%;
+	left: 5%;*/
+
+
+
+	width: 100%;
+	height: 100vh;
+
+	background-color: black;
+
+
+	display: grid;
+
+}
+
+.the-team-bg {
+	position: absolute;
+	width: 100%;
+	height: 50vh;
+
+	background-image: linear-gradient(to bottom, black, var(--primary-color));
+	/*background-color: black;*/
+}
+
+.the-team-bg:after {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
 	right: 0;
-	justify-content: flex-end;
-	transform: rotate3d(0, 1, 0, -90.03deg) ; 
-	transform-origin: 100% 50%;
+	content: '';
+	background: inherit;
+	transform-origin: top left;
+	transform: skewY(8deg);
+}
+
+
+
+#the-team .cards {
+ 	position: relative;
+
+ 	/*top: 15%;
+ 	left: 5%;*/
+
+ 	margin: 10%;
+ 	height: 100vh;
+	/*display: grid;	 
+	align-content: center;
+  	
+	grid-template-columns: repeat(4, 1fr);
 	
-
+	grid-auto-rows: auto;
+	grid-gap: 1.5rem;*/
 }
 
-.room__side--left {
-	justify-content: flex-start;
-	transform: rotate3d(0, 1, 0, 65deg);
-	transform-origin: 0 50%;
-	
-	background: url('../images/black-3d-background-1.jpg');
-	background-position: center;
-	background-attachment: all;
-	background-size: cover;
 
+.img-thumbnail{
+	border: none !important;
+	/*border-radius: .25rem !important;*/
 }
 
-.room__side--bottom {
-	width: 100vw; /* depth */
-	height: 1000px;
-	/*background: #d0d0d0;*/
-	background-color: black !important;
-	transform: rotate3d(1, 0, 0, 90deg) translate3d(0, -1000px, 0);
-	transform-origin: 50% 0%;
-	
+
+#the-team i.fa,
+#the-team i.fas,
+#the-team i.fab
+{
+	color: var(--secondary-color);
 }
 
-.room__side--bottom {
-	top: 100%;
-}
+
+
 
 /*section.biomecharnis-section*/
-
-
 
 
 

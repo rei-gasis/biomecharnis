@@ -503,7 +503,7 @@ $infoContainer.hover(function(){
     // $listNavigationContainer.find('ul li:first-child').addClass('active')    
 
     
-    console.log($listNavigationContainer.find('.nav').find('.nav-item'))
+    // console.log($listNavigationContainer.find('.nav').find('.nav-item'))
 
 })
 
