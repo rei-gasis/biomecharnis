@@ -75,7 +75,7 @@
 
 				<div class="home-section-btn d-flex justify-content-center">
 					<!-- <div class="col-12 d-flex justify-content-center"> -->
-						<a class="nav-right" href="#main-content"><span>Begin Learning</a>	
+						<a class="nav-right" href="#what-is-biomecharnis"><span>Begin Learning</a>	
 					<!-- </div> -->
 					
 				</div>
@@ -98,7 +98,7 @@
 				<div class="row list-navigation-container justify-content-center">
 					<ul class="nav flex-row">
 						<li class="nav-item" ng-repeat="arnis in arnisList" ng-click="viewArnisSystemInfo(arnis, $event)">
-							{{arnis.title.rendered}}
+							{{arnis.title}}
 						</li>
 					</ul>
 				</div>
@@ -142,7 +142,7 @@
 						<div class="arnis-system-info-container carousel slide clearfix" data-interval="false" data-ride="carousel">
 							<div class="arnis-system-info-header mb-1 d-flex justify-content-between">
 								<div class="arnis-system-title">
-									<h3>{{arnisSelected.title.rendered}}</h3>
+									<h3>{{arnisSelected.title}}</h3>
 								</div>
 								<div class="arnis-system-info-nav btn-group">	
 									<button class="btn btn-primary view-arnis-style" data-toggle="tooltip" data-placement="top" title="View"><a href="{{arnisSelected.GMData[0].link}}"><i class="fas fa-eye"></i></a></button>
@@ -235,128 +235,246 @@
 
 
 			<section class="container-fluid biomecharnis-section">
-				<!-- <div class="room__container"> -->
-					<!-- <div class="room room--current">
-						<div class="room__side room__side--back ">
-							 <h2></h2>What is BiomechArnis?</h2>
-				             <p class="content__type">
-				                	
-				                    
-				             </p>
-						</div>
-						<div class="room__side room__side--left">
-						</div>
-						<div class="room__side room__side--right">
-						</div>
-						<div class="room__side room__side--bottom"></div>
-					</div> -->
-					<div class="row h-100">
-						<!-- <div class="col-5"> -->
-							<div class="parallax-container">	
-								<ul id="parallax-scene">
-									<!-- <li class="layer" data-depth="0.1">
-										<img id="pl-background" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/3dbackground.png" class="img-fluid"/> -->
-										<!-- class="img-fluid" -->
-									</li>
-									<li class="layer" data-depth="1">
-										<img id="pl-actual" class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/actual_capture.png"/>
-									</li>
+						<nav class="nav biomecharnis-section-nav">
+							<ul>
+								<li><a href="#what-is-biomecharnis">What is BiomechArnis</a></li>
+								<li><a href="#the-team">The Team</a></li>
+								<li><a href="#">Contact Us</a></li>
+							</ul>	
+						</nav>
 
-									<li class="layer mt-5" data-depth="0.3">
-										<img id="pl-mocap" class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/mocap.png"/>
-									</li>
-									
-									
-								</ul>	
-							</div>
-						<!-- </div> -->
-						<div id="biomecharnis-content" class="offset-5 col-6 d-flex flex-column align-self-center">
-							<!-- <div class="tab-content" id="biomecharnis-content"> -->
-								<article id="main-content" class="tab-pane active mb-5">
-									<h1>What is BiomechArnis?</h1>
-									<p>
-										The BiomechArnis Filipino Martial Art Movement Archive is an online digital archive of our Filipino martial art movement literature. It aims to capture the key elements of Filipino martial art movement across practitioners and styles and to enable comparison and contrast of their similarities and differences via three dimensional (3D) motion capture. 3D motion capture (or ‘3D mocap’) is a type of digital recording technology that gives an additional dimension of depth to the performance of movement. It recreates real-time movement along three dimensions on a two-dimensional surface such as a computer screen. 
-									</p>	
-								</article>
+					<div id="what-is-biomecharnis" class="">
+						<div class="parallax-container">	
+							<ul id="parallax-scene">
 								
-								<article id="content-1" class="tab-pane">
-									<p>
-										As it is a dynamic activity, the recording, preservation, learning and understanding of Filipino martial arts is better facilitated with digital motion capture. Digital motion capture provides more movement information than text, still photographs, or video because motion is recorded in three dimensions. This in turn allows you to also to view the recording as the motion sequence transpires in running time. In this archive, a corresponding video recording is placed alongside the motion capture, for reference and context. 
-									</p>
-								</article>
+								<!-- <li class="layer" data-depth=".4">
+									<img id="pl-actual" class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/actual_capture.png"/>
+								</li> -->
 
-								<article id="content-2" class="tab-pane">
-									<p>
-										The BiomechArnis Filipino Martial Art Movement Archive is our first attempt to digitally document our Filipino martial art movement culture and heritage.  This repository is a constant work in progress that aims to include as many Philippine indigenous martial arts to represent the multitude and diversity of our ethnicity. The arnis systems currently included were facilitated through the generosity of friends in the Filipino martial art community, as well as the Philippine Eskrima Kali Arnis Federation (PEKAF). It is from this starting point that we intend to build this digital library, for reference of students, teachers, enthusiasts and fans of Filipino martial arts. 
-									</p>
-								</article>
-
-								<article id="content-3" class="tab-pane">
-									<p>
-										As an art form, there are numerous recordings of the grand masters, masters, experts, and artists for future generations to study and appreciate. However, many of the grand masters, the inheritors and standard-bearers, are in their senior years. This lends urgency to this initiative to record their distinct movements that demonstrate expertise and the unique characteristics of their respective systems. 
-									</p>
-								</article>
-								<article id="content-4" class="tab-pane">
-									<p>
-										Since it is within the nature of a database to be cumulative, the art can be brought to light with these initial elements to begin with and then built upon over time. We invite scholars, artists and enthusiasts from different fields, and hope to collaborate to expand the depth and scope of this archive.   
-										<br/>
-										<br/>
-										<br/>
-										<br/>
-										<br/>
-										<br/>
-										<br/>
-										<br/>
-									</p>
-								</article>
+								<li class="layer mt-5" data-depth=".4">
+									<img id="pl-mocap" class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/mocap.png"/>
+								</li>
+								
+								
+							</ul>	
+						</div>
+						<div class="row h-100">
+							<!-- <div class="col-5"> -->
+								
 							<!-- </div> -->
-						</div>
-						<div class="col-1 d-flex flex-column align-self-center">
-							<ul class="nav flex-column" id="biomecharnis-tab">
-							  <li class="nav-item">
-							  	<a class="nav-link active" id="main-content-tab" data-toggle="tab" href="#main-content">
-							    </a>
-							  </li>
-							  <li class="nav-item">
-							  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-1">
-							    </a>
-							  </li>
-							  <li class="nav-item">
-							  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-2">
-							    </a>
-							  </li>
-							  <li class="nav-item">
-							  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-3">
-							    </a>
-							  </li>
-							  <li class="nav-item">
-							  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-4">
-							    </a>
-							  </li>
-							</ul>
-						</div>
+							<div id="biomecharnis-content" class="offset-5 col-6 d-flex flex-column align-self-center">
+								<!-- <div class="tab-content" id="biomecharnis-content"> -->
+									<article id="main-content" class="tab-pane active mb-5">
+										<h1>What is BiomechArnis?</h1>
+										<p>
+											The BiomechArnis Filipino Martial Art Movement Archive is an online digital archive of our Filipino martial art movement literature. It aims to capture the key elements of Filipino martial art movement across practitioners and styles and to enable comparison and contrast of their similarities and differences via three dimensional (3D) motion capture. 3D motion capture (or ‘3D mocap’) is a type of digital recording technology that gives an additional dimension of depth to the performance of movement. It recreates real-time movement along three dimensions on a two-dimensional surface such as a computer screen. 
+										</p>	
+									</article>
+									
+									<article id="content-1" class="tab-pane">
+										<p>
+											As it is a dynamic activity, the recording, preservation, learning and understanding of Filipino martial arts is better facilitated with digital motion capture. Digital motion capture provides more movement information than text, still photographs, or video because motion is recorded in three dimensions. This in turn allows you to also to view the recording as the motion sequence transpires in running time. In this archive, a corresponding video recording is placed alongside the motion capture, for reference and context. 
+										</p>
+									</article>
+
+									<article id="content-2" class="tab-pane">
+										<p>
+											The BiomechArnis Filipino Martial Art Movement Archive is our first attempt to digitally document our Filipino martial art movement culture and heritage.  This repository is a constant work in progress that aims to include as many Philippine indigenous martial arts to represent the multitude and diversity of our ethnicity. The arnis systems currently included were facilitated through the generosity of friends in the Filipino martial art community, as well as the Philippine Eskrima Kali Arnis Federation (PEKAF). It is from this starting point that we intend to build this digital library, for reference of students, teachers, enthusiasts and fans of Filipino martial arts. 
+										</p>
+									</article>
+
+									<article id="content-3" class="tab-pane">
+										<p>
+											As an art form, there are numerous recordings of the grand masters, masters, experts, and artists for future generations to study and appreciate. However, many of the grand masters, the inheritors and standard-bearers, are in their senior years. This lends urgency to this initiative to record their distinct movements that demonstrate expertise and the unique characteristics of their respective systems. 
+										</p>
+									</article>
+									<article id="content-4" class="tab-pane">
+										<p>
+											Since it is within the nature of a database to be cumulative, the art can be brought to light with these initial elements to begin with and then built upon over time. We invite scholars, artists and enthusiasts from different fields, and hope to collaborate to expand the depth and scope of this archive.   
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+										</p>
+									</article>
+								<!-- </div> -->
+							</div>
+							<div class="col-1 d-flex flex-column align-self-center">
+								<ul class="nav flex-column" id="biomecharnis-tab">
+								  <li class="nav-item">
+								  	<a class="nav-link active" id="main-content-tab" data-toggle="tab" href="#main-content">
+								    </a>
+								  </li>
+								  <li class="nav-item">
+								  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-1">
+								    </a>
+								  </li>
+								  <li class="nav-item">
+								  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-2">
+								    </a>
+								  </li>
+								  <li class="nav-item">
+								  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-3">
+								    </a>
+								  </li>
+								  <li class="nav-item">
+								  	<a class="nav-link" id="main-content-tab" data-toggle="tab" href="#content-4">
+								    </a>
+								  </li>
+								</ul>
+							</div>
+						</div>	
 					</div>
-					
-				<!-- </div> -->
-				
-				
-				<!-- <div class="inner-row"> -->
-					
-				<!-- </div> -->
 
-			    <!-- <div class="row h-10 page-navigation-container justify-content-between">
-						<button class="nav-left">
-						  <span data-title="PREV"><i class="fas fa-angle-left"></i></span>
-						</button>
-						<button class=" nav-right">
-						  <span data-title="NEXT"><i class="fas fa-angle-right"></i></span>
-						</button>
-				</div> -->
-				<!-- justify-content-between -->
-					
-					
+					<div id="the-team">
+						<div class="the-team-bg">
+						</div>
+						<div class="row text-center" style="margin: 10%">
+            				<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center shadow-sm">
+	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/thor-150x150.png';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Thor Manlangit</h4>
+					                    <span class="small text-uppercase text-muted">Team Leader</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center shadow-sm">
+	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/babs2-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Rachell Peneyra</h4>
+					                    <span class="small text-uppercase text-muted">Team Member</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center shadow-sm">
+	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/bert-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Bert Madrigal</h4>
+					                    <span class="small text-uppercase text-muted">Team Member</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center shadow-sm">
+	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/placeholder-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Felipe Jocano</h4>
+					                    <span class="small text-uppercase text-muted">Anthropologist</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center shadow-sm">
+	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/dave1-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Dave Bercades</h4>
+					                    <span class="small text-uppercase text-muted">Technical Consultant</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center shadow-sm">
+	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/kevin1-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Kevin Buenviaje</h4>
+					                    <span class="small text-uppercase text-muted">3D Generalist / Technical Artist</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center shadow-sm">
+	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/winson-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Winson Gasis</h4>
+					                    <span class="small text-uppercase text-muted">Web Developer</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center shadow-sm">
+	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/glez-150x150.png';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Glez Aparato</h4>
+					                    <span class="small text-uppercase text-muted">Admin Assistant</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
 
-				<!-- </div> -->
+						</div>
+
+					</div> <!-- the team-->
+
+					<!-- <script>
+							$biomechArnisSectionNav = $('.biomecharnis-section-nav')
+							$theTeamSection = $('#the-team')
+							// $prevPos = $theTeamSection[0].offsetTop
+							$prevPos = $theTeamSection.prop("offsetTop")
+
+							$theTeamSection.on('scroll', function(){
+								$newPos = $theTeamSection.prop("offsetTop")
+								// $newPos = $theTeamSection[0].offsetTop
+
+								console.log('newPos', $newPos) 
+								console.log('prevPos', $prevPos)
+
+								if($newPos > $prevPos){
+									$biomechArnisSectionNav.hide(slow)
+								}
+								// console.log('test')
+							})
+
+							console.log($prevPos)
+
+						</script> -->
+					
+					
 			</section>
 
 			<section class="container-fluid filler-2">
@@ -377,85 +495,6 @@
 		</div>
 	</div>
 
-
-	<!-- for 3D scrolling -->
-
-	<!-- <main>
-				        <div class="content">
-				            <div class="fold-content" id="base-content">
-
-				                
-				                
-				                <h2 class="content__headline">Utopian dreamer</h2>
-				                <p class="content__type">
-				                    The Utopia of a modern dreamer must needs differ in one fundamental
-				                    aspect from the Nowheres and Utopias men planned before Darwin
-				                    quickened the thought of the world.
-				                </p>
-				                
-				                <h2 class="content__headline">All perfect</h2>
-				                <p class="content__type">
-				                    Those were all perfect and
-				                    static States, a balance of happiness won for ever against the
-				                    forces of unrest and disorder that inhere in things.
-				                    One beheld a
-				                    healthy and simple generation enjoying the fruits of the earth in
-				                    an atmosphere of virtue and happiness, to be followed by other
-				                    virtuous, happy, and entirely similar generations, until the Gods
-				                    grew weary.
-				                </p>
-				                
-				                <h2 class="content__headline">Invincible dams</h2>
-				                <p class="content__type">
-				                    Change and development were dammed back by invincible
-				                    dams for ever. But the Modern Utopia must be not static but kinetic,
-				                    must shape not as a permanent state but as a hopeful stage, leading
-				                    to a long ascent of stages.
-				                </p>
-				                				                <h2 class="content__headline">Do not resist</h2>
-				                <p class="content__type">
-				                    Nowadays we do not resist and overcome
-				                    the great stream of things, but rather float upon it. We build now
-				                    not citadels, but ships of state. For one ordered arrangement of
-				                    citizens rejoicing in an equality of happiness safe and assured
-				                    to them and their children for ever, we have to plan "a flexible
-				                    common compromise, in which a perpetually novel succession of
-				                    individualities may converge most effectually upon a comprehensive
-				                    onward development."
-				                </p>
-				                
-				                <h2 class="content__headline">Modern conceptions</h2>
-				                <p class="content__type">
-				                    That is the first, most generalised difference
-				                    between a Utopia based upon modern conceptions and all the Utopias
-				                    that were written in the former time.
-				                </p>
-				                <h2 class="content__headline"> What is BiomechArnis?</h2>
-				                <p class="content__type">
-				                	
-				                    The BiomechArnis Filipino Martial Art Movement Archive is an online digital archive of our Filipino martial art movement literature. It aims to capture the key elements of Filipino martial art movement across practitioners and styles and to enable comparison and contrast of their similarities and differences via three dimensional (3D) motion capture. 3D motion capture (or ‘3D mocap’) is a type of digital recording technology that gives an additional dimension of depth to the performance of movement. It recreates real-time movement along three dimensions on a two-dimensional surface such as a computer screen. 
-				                </p>
-				                <h2 class="content__headline"> What is BiomechArnis?</h2>
-				                <p class="content__type">
-				                    The BiomechArnis Filipino Martial Art Movement Archive is an online digital archive of our Filipino martial art movement literature. It aims to capture the key elements of Filipino martial art movement across practitioners and styles and to enable comparison and contrast of their similarities and differences via three dimensional (3D) motion capture. 3D motion capture (or ‘3D mocap’) is a type of digital recording technology that gives an additional dimension of depth to the performance of movement. It recreates real-time movement along three dimensions on a two-dimensional surface such as a computer screen. 
-				                </p>
-				            </div>
-				            
-				            <button class="btn-debug" id="btn-debug">See Planes</button>
-				        </div>
-				    </main> -->
-	<!-- <div class="screen show">
-        <div class="folds" id="folds">
-            <div class="fold fold-center" id="fold-center"></div>
-            <div class="fold-3d fold-3d-top top-wrapper">
-                <div class="fold fold-top" id="fold-top"></div>
-            </div>
-            <div class="fold-3d fold-3d-bottom bottom-wrapper">
-                <div class="fold fold-bottom" id="fold-bottom"></div>
-            </div>
-        </div>
-    </div> -->
-	
 
 	
 	

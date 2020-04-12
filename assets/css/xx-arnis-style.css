@@ -361,6 +361,7 @@ transform: rotateY(0deg) translateZ(var(--card-width));
 
 
 .list-navigation-container {
+  z-index: 2;
   position: relative;
   top: 30px;
 }
@@ -409,4 +410,23 @@ transform: rotateY(0deg) translateZ(var(--card-width));
   transition: 0.6;
   background-color: white;
   color: black;
+}
+
+
+
+.arnis-form-container {
+  z-index: 2;
+  position: relative;
+  bottom: -100px;
+
+  align-items: center;
+
+  border-radius: 10px;
+  height: 50px;
+  background-color: var(--secondary-color);
+  opacity: .90;
+
+  padding: 20px;
+  z-index: 5;
+
 }

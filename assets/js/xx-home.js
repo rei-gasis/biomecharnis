@@ -20,10 +20,33 @@ $().ready(function(){
 
 	$biomecharnisContent = $('#biomecharnis-content')
 	$biomecharnisContent.children().css('opacity', '0')
+	$biomecharnisContent.find('#biomecharnis-tab').css('opacity', '1')
 	$biomecharnisContent.find('#main-content').css('opacity', '1')
 	
 
-	$("a[href^='#']").click(function(e) {
+	$("#biomecharnis-tab a[href^='#']").click(function(e) {
+		e.preventDefault()
+
+		$biomecharnisContent.children().css('opacity', '0') //hide others
+		$($(this).attr("href")).css('opacity', '1') //show elected
+
+		// var position = $($(this).attr("href")).offset().top
+		var position = $($(this).attr("href")).prop("offsetTop")
+
+		$biomecharnisContent.animate({
+			scrollTop: position
+		}, 50 );
+
+		// console.log(position)
+		// console.log($($(this).attr("href")).prop("offsetTop"))
+		// console.log($($(this).attr("href")).offset())
+
+
+
+	})
+
+
+	$("#biomecharnis-tab a[href^='#']").click(function(e) {
 		e.preventDefault()
 
 		$biomecharnisContent.children().css('opacity', '0') //hide others
