@@ -97,7 +97,7 @@
 				</div>
 				<div class="row list-navigation-container justify-content-center">
 					<ul class="nav flex-row">
-						<li class="nav-item" ng-repeat="arnis in arnisList" ng-click="viewArnisSystemInfo(arnis, $event)">
+						<li class="nav-item" ng-class="{active: $index==0}" ng-repeat="arnis in arnisList" ng-click="viewArnisSystemInfo(arnis, $event)">
 							{{arnis.title}}
 						</li>
 					</ul>
@@ -142,7 +142,8 @@
 						<div class="arnis-system-info-container carousel slide clearfix" data-interval="false" data-ride="carousel">
 							<div class="arnis-system-info-header mb-1 d-flex justify-content-between">
 								<div class="arnis-system-title">
-									<h3>{{arnisSelected.title}}</h3>
+									<!-- <h3>{{arnisSelected.title}}</h3> -->
+									<h3>{{slides[0].title}}</h3>
 								</div>
 								<div class="arnis-system-info-nav btn-group">	
 									<button class="btn btn-primary view-arnis-style" data-toggle="tooltip" data-placement="top" title="View"><a href="{{arnisSelected.GMData[0].link}}"><i class="fas fa-eye"></i></a></button>
@@ -152,74 +153,63 @@
 							</div>
 							
 						  <div class="carousel-inner text-center card bg-dark text-white py-2">
-						    <div class="carousel-item active arnis-system-desc">
-						    	<div class="row">
+						  	<div class="carousel-item" ng-class="{active: $index==0}" ng-repeat="slide in slides">
+						  		<div class="row" ng-if="$index==0">
 						    		<div class="col-12">
-						    			<p ng-bind-html="arnisSelected.content.rendered"></p>		
+						    			<p ng-bind-html="slide.content.rendered"></p>
 						    		</div>
 						    	</div>
-						    </div>
-						    <div class="carousel-item onsite-images">
-						    	<div class="row">
-						    		<div class="col-4">
-						    			<a href="#" ng-click="setSelectedOnsiteImage(arnisSelected.onsiteImage1)">
-						    				<img ng-show="arnisSelected.onsiteImage1 != ''" class="img-fluid" id="onsiteImage1" ng-src="{{arnisSelected.onsiteImage1}}"/>
-						    			</a>
-						    		</div>
-						    		<div class="col-4">
-						    			<a href="#" ng-click="setSelectedOnsiteImage(arnisSelected.onsiteImage2)">
-						    				<img ng-show="arnisSelected.onsiteImage2 != ''" class="img-fluid" id="onsiteImage2" ng-src="{{arnisSelected.onsiteImage2}}"/>	
-						    			</a>
-						    		</div>
-						    		<div class="col-4">
-						    			<a href="#" ng-click="setSelectedOnsiteImage(arnisSelected.onsiteImage3)">
-						    				<img ng-show="arnisSelected.onsiteImage3 != ''" class="img-fluid" id="onsiteImage3" ng-src="{{arnisSelected.onsiteImage3}}"/>	
-						    			</a>
-						    		</div>
-						    	</div>
-						    </div>
 
-						    <div class="carousel-item">
-						    	<div class="row" >
-						    		<div class="col-4" ng-repeat="gm in arnisSelected.GMData">
-						    			<!-- data-toggle="tooltip" data-placement="top" title="{{gm.title.rendered}}" -->
-						    			<a href="{{gm.link}}">
-						    				<img ng-show="gm.id != ''" class="img-fluid" ng-src="{{gm.GMImageUrl}}"/>
-						    			</a>
-						    		</div>
+
+
+						    	<div ng-if="$index==1 && slides[1]['onsiteImages']">
+						    		<div class="row">
+							    		<div class="col-4" ng-if="slides[1]['onsiteImages']" ng-repeat="image in slides[1]['onsiteImages']">
+							    			<a href="#" ng-click="setSelectedOnsiteImage(image)">
+							    				<img class="img-fluid" id="onsiteImage1" ng-src="{{image}}"/>
+							    			</a>
+							    		</div>
+							    	</div>	
 						    	</div>
-						    	<!-- <p ng-repeat="gm in arnisSelected.GMData">{{gm.id}}</p> -->
-						    	<!-- <div class="carousel-item onsite-images">
-							    	<div class="row">
-							    		<div class="col-4">
-							    			<a href="#" ng-click="setSelectedOnsiteImage(arnisSelected.onsiteImage1)">
-							    				<img ng-show="arnisSelected.onsiteImage1 != ''" class="img-fluid" id="onsiteImage1" ng-src="{{arnisSelected.onsiteImage1}}"/>
-							    			</a>
-							    		</div>
-							    		<div class="col-4">
-							    			<a href="#" ng-click="setSelectedOnsiteImage(arnisSelected.onsiteImage2)">
-							    				<img class="img-fluid" id="onsiteImage2" ng-src="{{arnisSelected.onsiteImage2}}"/>	
-							    			</a>
-							    		</div>
-							    		<div class="col-4">
-							    			<a href="#" ng-click="setSelectedOnsiteImage(arnisSelected.onsiteImage3)">
-							    				<img class="img-fluid" id="onsiteImage3" ng-src="{{arnisSelected.onsiteImage3}}"/>	
+
+
+						    	<div ng-if="$index==1 && slides[1]['gmData']">
+						    		<div class="row">
+							    		<div class="col-4" ng-repeat="gm in slides[1]['gmData']">
+							    			<a href="{{gm.link}}" style="text-decoration: none; color: white;">
+							    				<div class="card bg-transparent">
+							    					<div class="card-header">
+							    						{{gm.title}}
+							    					</div>
+							    					<div class="card-body">
+							    						<img class="img-fluid" ng-src="{{gm.GMImageUrl}}"/>		
+							    					</div>
+							    				</div>
 							    			</a>
 							    		</div>
 							    	</div>
-							    </div> -->
-						    	
-						      <!-- <img src="..." class="d-block w-100" alt="..."> -->
+						    	</div>
+
+						    	<div ng-if="$index==2">
+						    		<div class="row">
+							    		<div class="col-4" ng-repeat="gm in slides[2]['gmData']">
+							    			<a href="{{gm.link}}" style="text-decoration: none; color: white;">
+							    				<div class="card bg-transparent">
+							    					<div class="card-header">
+							    						{{gm.title}}
+							    					</div>
+							    					<div class="card-body">
+							    						<img class="img-fluid" ng-src="{{gm.GMImageUrl}}"/>		
+							    					</div>
+							    				</div>
+							    			</a>
+							    		</div>
+							    	</div>
+						    	</div>
+						    
+
 						    </div>
 						  </div>
-						  <!-- <a class="carousel-control-prev" href="#arnis-system-info-container" role="button" data-slide="prev">
-						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						    <span class="sr-only">Previous</span>
-						  </a>
-						  <a class="carousel-control-next" href="#arnis-system-info-container" role="button" data-slide="next">
-						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-						    <span class="sr-only">Next</span>
-						  </a> -->
 						
 						</div>
 					</div>
@@ -246,10 +236,6 @@
 					<div id="what-is-biomecharnis" class="">
 						<div class="parallax-container">	
 							<ul id="parallax-scene">
-								
-								<!-- <li class="layer" data-depth=".4">
-									<img id="pl-actual" class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/actual_capture.png"/>
-								</li> -->
 
 								<li class="layer mt-5" data-depth=".4">
 									<img id="pl-mocap" class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/mocap.png"/>
