@@ -1,6 +1,21 @@
 angular.module('arnisApp', ['ngSanitize'])
     .controller('arnisListController', function($scope, $http, $q) {
 
+        // $scope.slides = [{"arnisSystemDesc": "This is a description"},
+        //                  {"onsiteImages": [{"image1": "img"},
+        //                                     {"image2": "img"}
+        //                                     ]
+        //                  },
+        //                  {"gmData": [{"gm1": "nene"},
+        //                              {"gm2": "rey"}
+        //                             ]
+        //                  },
+        //                  ]
+                        
+                        
+        $scope.slides = [];
+
+        // console.table($scope.slides)
 
         function getBaseURL() {
             return $q((resolve, reject) => {
@@ -27,16 +42,15 @@ angular.module('arnisApp', ['ngSanitize'])
 
                 $http.get($baseUrl + '/wp-json/wp/v2/arnis_system?parent=0') //base arnis systems
                     .then(
-                        response => {
+                        async response => {
                             $scope.arnisList = response.data;
                             $scope.arnisList = $scope.arnisList.filter(arnis => { return arnis.parent == "0" });
 
                             //set data for first arnis system
-                            $scope.arnisSelected = $scope.arnisList[0];
-                            getOnsiteImages($scope.arnisSelected);
-                            getGMData($scope.arnisList[0]);
+                            // $scope.arnisSelected = $scope.arnisList[0];
+                            // $scope.slides = [$scope.arnisSelected]
 
-                            // console.log($scope.arnisSelected)
+                            setArnisInfo($scope.arnisList[0])
 
 
                             $listCtr = 1;
@@ -65,53 +79,22 @@ angular.module('arnisApp', ['ngSanitize'])
                         });
 
 
-
-
-
-                function getGMData(arnis) {
-                    // console.log(arnis)
-                    
-                    if (arnis) {
-                        
-                        $http.get($baseUrl + '/wp-json/wp/v2/arnis_system?parent=' + arnis.id)
-                            .then(
-                                async response => {
-                                        arnis.GMData = await response.data;
-
-                                        // console.log($scope.arnisSelected.GMData)
-                                        /*Fetch Image URL*/
-                                        angular.forEach(arnis.GMData, function(gm) {
-                                            // console.log('looping gm data')
-                                            if(gm.acf.grandmaster_image[0])
-                                                $http.get($requestMediaUrl + gm.acf.grandmaster_image[0])
-                                                .then(function(response) {
-                                                    // console.log('gm image url fetched')
-                                                    if (!angular.isUndefined(response.data.guid)) {
-                                                        gm.GMImageUrl = response.data.guid.rendered;
-                                                        // console.log('gm image url assigned')
-                                                    }
-                                                }, function(error) {
-                                                    console.log(error);
-                                                    return '';
-                                                })
-                                            // console.log($scope.arnisSelected.GMData)
-                                        })
-                                    },
-                                    error => {
-                                        console.log(error)
-                                    }
-                            )
-                    }
-
-                }
-
-
                 function getOnsiteImages(arnis) {
+                    let onsiteImages = [];
+
+
                     if (arnis) {
                         $http.get($requestMediaUrl + arnis.acf.onsite_image_1)
                             .then(function(response) {
-                                if (!angular.isUndefined(response.data.guid))
-                                    $scope.arnisSelected.onsiteImage1 = response.data.guid.rendered;
+                                if (!angular.isUndefined(response.data.guid)){
+
+                                    onsiteImages.push(response.data.guid.rendered)
+                                    // $scope.arnisSelected.onsiteImages = angular.extend({}, onsiteImages)
+                                    $scope.slides.push({"onsiteImages": onsiteImages})
+                                    // console.log($scope.slides)
+                                    
+                                }
+                                    
                                 else
                                     $scope.arnisSelected.onsiteImage1 = '';
 
@@ -122,10 +105,12 @@ angular.module('arnisApp', ['ngSanitize'])
                             })
 
                         //2
+                        // setTimeOut
                         $http.get($requestMediaUrl + arnis.acf.onsite_image_2)
                             .then(function(response) {
-                                if (!angular.isUndefined(response.data.guid))
-                                    $scope.arnisSelected.onsiteImage2 = response.data.guid.rendered;
+                                if (!angular.isUndefined(response.data.guid)){
+                                    onsiteImages.push(response.data.guid.rendered)
+                                }
                                 else
                                     $scope.arnisSelected.onsiteImage2 = '';
 
@@ -138,8 +123,11 @@ angular.module('arnisApp', ['ngSanitize'])
                         //3
                         $http.get($requestMediaUrl + arnis.acf.onsite_image_3)
                             .then(function(response) {
-                                if (!angular.isUndefined(response.data.guid))
-                                    $scope.arnisSelected.onsiteImage3 = response.data.guid.rendered;
+                                if (!angular.isUndefined(response.data.guid)){
+                                    
+                                    onsiteImages.push(response.data.guid.rendered)
+                                    
+                                }
                                 else
                                     $scope.arnisSelected.onsiteImage3 = '';
 
@@ -153,6 +141,57 @@ angular.module('arnisApp', ['ngSanitize'])
                         // $scope.arnisSelected.onsiteImage3 = '';
                     }
                 }
+
+
+
+                function getGMData(arnis) {
+                    
+                    
+                    if (arnis) {
+                        
+                        $http.get($baseUrl + '/wp-json/wp/v2/arnis_system?parent=' + arnis.id)
+                            .then(
+                                response => {
+                                        // arnis.GMData =  response.data;
+
+                                        
+                                        $scope.slides.push({'gmData': response.data})
+                                        // console.log($scope.slides)
+                                        // console.log($scope.slides['gmData'])
+                                        
+                                        /*Fetch Image URL*/
+                                        // angular.forEach($scope.slides[2], gm => {
+                                        //     console.log(gm)
+                                        //     if(gm.acf)
+                                        //         $http.get($requestMediaUrl + gm.acf.grandmaster_image[0])
+                                        //         .then(function(response) {
+                                        //             // console.log('gm image url fetched')
+                                        //             if (!angular.isUndefined(response.data.guid)) {
+
+                                        //                 gm.GMImageUrl = response.data.guid.rendered;
+                                        //                 // console.log('gm image url assigned')
+                                        //             }
+                                        //         }, function(error) {
+                                        //             console.log(error);
+                                        //             return '';
+                                        //         })
+                                            
+                                        // })
+
+                                        // console.log($scope.slides)
+
+                                        
+                                    },
+                                    error => {
+                                        console.log(error)
+                                    }
+                            )
+                    }
+
+                }
+
+
+                
 
                 // function getOnsiteImage2($id) {
                 //     if ($id) {
@@ -224,6 +263,12 @@ angular.module('arnisApp', ['ngSanitize'])
                         })
                 }
 
+
+                //set first arnis tab to active
+                $listNavigationContainer = $('.list-navigation-container')
+                
+
+
                 $scope.nextArnis = function() {
                     currdeg = currdeg - 45;
 
@@ -248,6 +293,30 @@ angular.module('arnisApp', ['ngSanitize'])
                         "-o-transform": "rotateY(" + currdeg + "deg)",
                         "transform": "rotateY(" + currdeg + "deg)"
                     });
+
+
+                    $activeArnis = $listNavigationContainer.find('ul li.active')
+
+
+                    if($activeArnis.next().length > 0){
+                        $activeArnis.next().addClass('active')
+                    }else{
+                        $listNavigationContainer.find('ul li').first().addClass('active')
+                    }
+                    
+                    $activeArnis.removeClass('active')
+
+
+
+                    
+
+
+
+                    // $($event.currentTarget).parent().children().removeClass('active')
+                    // $($event.currentTarget).addClass('active')
+
+
+
 
                     // console.log($scope.arnisList[currentArnisSystem]);
 
@@ -280,13 +349,20 @@ angular.module('arnisApp', ['ngSanitize'])
                         "transform": "rotateY(" + currdeg + "deg)"
                     });
 
-                    // carousel.css({
-                    //     "-webkit-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
-                    //     "-moz-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
-                    //     "-o-transform": "rotate3d(0, 1, 0, " + deg + "deg)",
-                    //     "transform": "rotate3d(0, 1, 0, " + deg + "deg)"
-                    // });
 
+                    $activeArnis = $listNavigationContainer.find('ul li.active')
+
+                    
+                    
+
+
+                    if($activeArnis.prev().length > 0){
+                        $activeArnis.prev().addClass('active')
+                    }else{
+                        $listNavigationContainer.find('ul li').last().addClass('active')
+                    }
+
+                    $activeArnis.removeClass('active')
                 }
 
 
@@ -320,20 +396,86 @@ angular.module('arnisApp', ['ngSanitize'])
                 }
 
 
+
                 function setArnisInfo(arnis){
 
+                    //init 1st array
+                    $scope.slides = [arnis]
 
-                    getOnsiteImages(arnis);
+                    let onsiteImages = []
+                    let gmData = []
 
-                    if (!arnis.GMData || typeof arnis.GMData === undefined)
-                        getGMData(arnis);
-
-                    $scope.arnisSelected = arnis;
+                    let onsiteImageCall = []
+                    let gmDataCall = []
 
 
-                    // console.log($scope.arnisSelected.onsiteImage1)
-                    // console.log($scope.arnisSelected.onsiteImage2)
-                    // console.log($scope.arnisSelected.onsiteImage3)
+
+                    //2nd array
+                    if(arnis.acf.onsite_image_1[0] != '')
+                        onsiteImageCall.push($http.get($requestMediaUrl + arnis.acf.onsite_image_1))
+                    if(arnis.acf.onsite_image_2[0] != '')
+                        onsiteImageCall.push($http.get($requestMediaUrl + arnis.acf.onsite_image_2))
+                    if(arnis.acf.onsite_image_3[0] != '')
+                        onsiteImageCall.push($http.get($requestMediaUrl + arnis.acf.onsite_image_3))
+                    
+
+
+
+
+                    $q.all(onsiteImageCall)
+                        .then(response => {
+                            
+
+                            angular.forEach(response, res => {
+                                // console.log(res)
+                                if(res.data.guid)
+                                    onsiteImages.push(res.data.guid.rendered)
+                            })
+
+                            if(onsiteImages.length > 0)
+                                $scope.slides.push({"onsiteImages": onsiteImages})
+
+
+
+
+
+                            //3rd array
+                            $http.get($baseUrl + '/wp-json/wp/v2/arnis_system?parent=' + arnis.id)
+                            .then(response => { 
+                                
+                                angular.forEach(response.data, gm => {
+                                    gmData.push(gm)
+                                })
+
+                                /*Fetch Image URL*/
+                                angular.forEach(gmData, gm => {
+                                    
+                                    if(gm.acf.grandmaster_image){
+                                        $http.get($requestMediaUrl + gm.acf.grandmaster_image[0])
+                                        .then(function(response) {
+                                            // console.log('fetched')
+                                            if (!angular.isUndefined(response.data.guid)) {
+                                                gm.GMImageUrl = response.data.guid.rendered;
+                                            }
+                                        }, function(error) {
+                                            console.log(error);
+                                            return '';
+                                        })
+                                    }
+                                })
+
+                                $scope.slides.push({'gmData': gmData})
+                                    
+                            })
+                        })
+
+
+
+                        
+                    
+
+
+
                 }
 
 
@@ -498,8 +640,9 @@ $infoContainer.hover(function(){
                         
                     })
 
-    //set first arnis tab to active
-    $listNavigationContainer = $('.list-navigation-container')
+    
+
+
     // $listNavigationContainer.find('ul li:first-child').addClass('active')    
 
     
