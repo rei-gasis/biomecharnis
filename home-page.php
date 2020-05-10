@@ -26,8 +26,13 @@
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/all.min.css"/>
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/fontawesome.css"/>
 
-	
+	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/flaticon/flaticon.css"/>
 
+
+	<!-- WPForms-->
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/wpforms-base.css"/>
+	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri();?>/assets/css/wpforms-full.css"/>
+	
 	
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 	<title>BiomechArnis | Motion Capture of Filipino Martial Arts</title>
@@ -83,17 +88,9 @@
 
 
 			<section class="container-fluid arnis-list-section" ng-controller="arnisListController">
-				<div class="row page-navigation-container justify-content-between">
-						<button class="nav-left">
-						  <span data-title="PREV"><i class="fas fa-angle-left"></i></span>
-						</button>
 
-						<h1 class="page-title">Arnis Systems</h1>
-
-
-						<button class=" nav-right">
-						  <span data-title="NEXT"><i class="fas fa-angle-right"></i></span>
-						</button>
+				<div class="row justify-content-center">
+						<h1 class="page-title">Arnis Systems</h1>		
 				</div>
 				<div class="row list-navigation-container justify-content-center">
 					<ul class="nav flex-row">
@@ -137,6 +134,8 @@
 					</div>
 					
 				</div>
+
+				<span class="current-arnis-style d-none">{{currentArnisStyleURL}}</span>
 				<div class="row arnis-list-container mt-3">
 					<div class="offset-2 col-8 text-center">
 						<div class="arnis-system-info-container carousel slide clearfix" data-interval="false" data-ride="carousel">
@@ -146,13 +145,13 @@
 									<h3>{{slides[0].title}}</h3>
 								</div>
 								<div class="arnis-system-info-nav btn-group">	
-									<button class="btn btn-primary view-arnis-style" data-toggle="tooltip" data-placement="top" title="View"><a href="{{arnisSelected.GMData[0].link}}"><i class="fas fa-eye"></i></a></button>
+									<button class="btn btn-primary view-arnis-style" data-toggle="tooltip" data-placement="top" title="View"><a href="#"><i class="fas fa-eye"></i></a></button>
 									<button class="btn btn-primary arnis-system-info-prev"><i class="fas fa-arrow-left"></i></button>
 									<button class="btn btn-primary arnis-system-info-next"><i class="fas fa-arrow-right"></i></button>
 								</div>	
 							</div>
 							
-						  <div class="carousel-inner text-center card bg-dark text-white py-2">
+						  <div class="carousel-inner text-center card bg-dark text-white">
 						  	<div class="carousel-item" ng-class="{active: $index==0}" ng-repeat="slide in slides">
 						  		<div class="row" ng-if="$index==0">
 						    		<div class="col-12">
@@ -176,7 +175,7 @@
 						    	<div ng-if="$index==1 && slides[1]['gmData']">
 						    		<div class="row">
 							    		<div class="col-4" ng-repeat="gm in slides[1]['gmData']">
-							    			<a href="{{gm.link}}" style="text-decoration: none; color: white;">
+							    			<a href="#" ng-click="setCurrentArnisStyle(gm.link)" style="text-decoration: none; color: white;">
 							    				<div class="card bg-transparent">
 							    					<div class="card-header">
 							    						{{gm.title}}
@@ -193,7 +192,7 @@
 						    	<div ng-if="$index==2">
 						    		<div class="row">
 							    		<div class="col-4" ng-repeat="gm in slides[2]['gmData']">
-							    			<a href="{{gm.link}}" style="text-decoration: none; color: white;">
+							    			<a href="#" ng-click="setCurrentArnisStyle(gm.link)" style="text-decoration: none; color: white;">
 							    				<div class="card bg-transparent">
 							    					<div class="card-header">
 							    						{{gm.title}}
@@ -214,24 +213,47 @@
 						</div>
 					</div>
 				</div>
+				<div class="row page-navigation-container justify-content-between">
+					<!-- <span><i class="fas fa-arrow-alt-left"></i></span> -->
+					<a class="nav-button nav-left">
+						<span><i class="flaticon-previous"></i></span>
+						
+					</a>
+
+					<!-- <a class="nav-button nav-right">
+						<span><i class="flaticon-next"></i></span>
+						
+					</a> -->
+				</div>
 				
 				
 				<div id="onsiteImageModal" class="custom-modal">
 				  <span class="close" ng-click="closeOnsiteImageModal()">&times;</span>
 				  <img class="custom-modal-content" ng-src="{{selectedOnsiteImage}}"/>
 				</div>	
-
 			</section>
 
 
 			<section class="container-fluid biomecharnis-section">
-						<nav class="nav biomecharnis-section-nav">
-							<ul>
-								<li><a href="#what-is-biomecharnis">What is BiomechArnis</a></li>
-								<li><a href="#the-team">The Team</a></li>
-								<li><a href="#">Contact Us</a></li>
-							</ul>	
-						</nav>
+					<nav class="nav biomecharnis-section-nav">
+						<ul>
+							<li><a href="#what-is-biomecharnis">What is BiomechArnis</a></li>
+							<li><a href="#the-team">The Team</a></li>
+							<li><a href="#contact-us">Contact Us</a></li>
+						</ul>	
+					</nav>
+
+					<div class="row page-navigation-container justify-content-between">
+						<a class="nav-button nav-left">
+							<span><i class="flaticon-previous"></i></span>
+							
+						</a>
+
+						<a class="nav-button nav-right">
+							<span><i class="flaticon-next"></i></span>
+							
+						</a>
+					</div>
 
 					<div id="what-is-biomecharnis" class="">
 						<div class="parallax-container">	
@@ -285,6 +307,22 @@
 											<br/>
 											<br/>
 											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
+											<br/>
 										</p>
 									</article>
 								<!-- </div> -->
@@ -316,13 +354,13 @@
 						</div>	
 					</div>
 
-					<div id="the-team">
+					<div id="the-team" class="">
 						<div class="the-team-bg">
 						</div>
 						<div class="row text-center" style="margin: 10%">
             				<div class="col-xl-3 col-sm-6 mb-5">
-								<div class="card text-center shadow-sm">
-	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
 					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/thor-150x150.png';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
 					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
 					                    <h4 class="mb-0 text-dark">Thor Manlangit</h4>
@@ -335,8 +373,8 @@
 								</div>
 							</div>
 							<div class="col-xl-3 col-sm-6 mb-5">
-								<div class="card text-center shadow-sm">
-	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
 					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/babs2-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
 					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
 					                    <h4 class="mb-0 text-dark">Rachell Peneyra</h4>
@@ -349,8 +387,8 @@
 								</div>
 							</div>
 							<div class="col-xl-3 col-sm-6 mb-5">
-								<div class="card text-center shadow-sm">
-	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
 					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/bert-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
 					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
 					                    <h4 class="mb-0 text-dark">Bert Madrigal</h4>
@@ -363,8 +401,8 @@
 								</div>
 							</div>
 							<div class="col-xl-3 col-sm-6 mb-5">
-								<div class="card text-center shadow-sm">
-	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
 					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/placeholder-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
 					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
 					                    <h4 class="mb-0 text-dark">Felipe Jocano</h4>
@@ -377,8 +415,8 @@
 								</div>
 							</div>
 							<div class="col-xl-3 col-sm-6 mb-5">
-								<div class="card text-center shadow-sm">
-	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
 					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/dave1-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
 					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
 					                    <h4 class="mb-0 text-dark">Dave Bercades</h4>
@@ -391,8 +429,8 @@
 								</div>
 							</div>
 							<div class="col-xl-3 col-sm-6 mb-5">
-								<div class="card text-center shadow-sm">
-	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
 					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/kevin1-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
 					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
 					                    <h4 class="mb-0 text-dark">Kevin Buenviaje</h4>
@@ -405,8 +443,8 @@
 								</div>
 							</div>
 							<div class="col-xl-3 col-sm-6 mb-5">
-								<div class="card text-center shadow-sm">
-	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
 					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/winson-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
 					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
 					                    <h4 class="mb-0 text-dark">Winson Gasis</h4>
@@ -419,8 +457,8 @@
 								</div>
 							</div>
 							<div class="col-xl-3 col-sm-6 mb-5">
-								<div class="card text-center shadow-sm">
-	                				<div class="bg-white rounded shadow-sm py-5 px-3">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
 					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/glez-150x150.png';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
 					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
 					                    <h4 class="mb-0 text-dark">Glez Aparato</h4>
@@ -433,57 +471,205 @@
 								</div>
 							</div>
 
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/nathan2-150x150.jpg';?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Nathan Dominguez</h4>
+					                    <span class="small text-uppercase text-muted">Arnis Technical Consultant</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+
+							<div class="col-xl-3 col-sm-6 mb-5">
+								<div class="card text-center ">
+	                				<div class=" rounded  py-5 px-3">
+					                    <img src="<?php echo site_url() . '/wp-content/uploads/2020/04/placeholder-150x150.jpg'?>" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-md" />
+					                    						  <!-- img-fluid rounded-circle mb-3 img-thumbnail shadow-md -->
+					                    <h4 class="mb-0 text-dark">Brian Lee</h4>
+					                    <span class="small text-uppercase text-muted">Arnis Technical Consultant</span>    
+					                    <ul class="social mb-0 list-inline mt-3">
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-envelope"></i></a></li>
+					                        <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a></li>
+					                    </ul>
+					                </div>
+								</div>
+							</div>
+
 						</div>
 
 					</div> <!-- the team-->
 
-					<!-- <script>
-							$biomechArnisSectionNav = $('.biomecharnis-section-nav')
-							$theTeamSection = $('#the-team')
-							// $prevPos = $theTeamSection[0].offsetTop
-							$prevPos = $theTeamSection.prop("offsetTop")
+					<div id="contact-us" class="container-fluid">
 
-							$theTeamSection.on('scroll', function(){
-								$newPos = $theTeamSection.prop("offsetTop")
-								// $newPos = $theTeamSection[0].offsetTop
+						<div class="row">
+							<div class="offset-1 col-3 col-lg-6 contact-us-form">
+								<h2 style="font-weight: 700">Get in Touch</h2>
+								<?php
+									echo do_shortcode('[wpforms id="996"]');
+								?>		
+							</div>
+							<div class="col-4 contact-us-info">
+								<div class="d-flex flex-column align-items-end">
+									<span class="text-right"><i class="fas fa-map-marker-alt"></i>
+										<p>Don Mariano Marcos Ave, Diliman, Quezon City, 1101 Metro Manila</p>	
+									</span>
 
-								console.log('newPos', $newPos) 
-								console.log('prevPos', $prevPos)
+									<span class="text-right"><i class="fas fa-phone-alt"></i>
+										<p>(02) 8929 6033</p>	
+									</span>
 
-								if($newPos > $prevPos){
-									$biomechArnisSectionNav.hide(slow)
-								}
-								// console.log('test')
-							})
-
-							console.log($prevPos)
-
-						</script> -->
-					
+									<span class="text-right text-wrap"><i class="fas fa-at"></i>
+										<p>biomech.arnis@gmail.com</p>	
+									</span>
+								</div>
+								
+							</div>
+						</div>
+					</div>
 					
 			</section>
 
-			<section class="container-fluid filler-2">
-				<!-- <div class="row h-10 page-navigation-container justify-content-between">
-						<button class="nav-left">
-						  <span data-title="PREV"><i class="fas fa-angle-left"></i></span>
-						</button>
 
 
-						<button class=" nav-right">
-						  <span data-title="NEXT"><i class="fas fa-angle-right"></i></span>
-						</button>
-				</div> -->
-				<div class="row h-100 justify-content-center">
-					<img class="img-fluid" src="<?php echo get_stylesheet_directory_uri();?>/assets/images/coming-soon.png"/>
+
+			
+			<section class="container-fluid arnis-style-section h-100" ng-controller="arnisStyleController">
+				<div class="row" style="height: 100vh; display: contents;">
+					<div class="offset-2 col-8">
+						<div class="list-navigation-container">
+							<ul class="nav flex-row d-flex flex-row justify-content-center">
+								<li class="nav-item" ng-click="view2D($event)">
+									2D
+								</li>
+								<li class="nav-item active" ng-click="view3D($event)">
+									3D
+								</li>
+								<li class="nav-item" ng-click="viewSideBySide($event)">
+									SideBySide
+								</li>
+							</ul>		
+						</div>
+						<div class="carousel-container">
+							<div class="carousel">
+								<div class="videoContainer viewer viewer_8 btm-shadow">
+									<!-- {{arnisInfo.vidOneID}} -->
+									<iframe width="350px" height="300px" class="videoContainer_video" ng-src="{{trustSrc(arnisInfo.vidOneSrc)}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+								<div class="viewer viewer_1 btm-shadow">
+									<div class="marmosetContainer"></div>
+								</div>
+								<div class="videoContainer viewer viewer_2 btm-shadow">
+									<!-- <iframe width="350px" height="300px" src="https://www.youtube.com/embed/_S-8MeQmC4o?rel=0;controls=0;showinfo=0;theme=light;modestbranding=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+									<iframe width="350px" height="300px" class="videoContainer_video" ng-src="{{trustSrc(arnisInfo.vidTwoSrc)}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+					  	<div class="carousel-left-btn float-left">
+							<h1 class="left-arnis">
+								<i class="fas fa-angle-double-left" ng-click="prevViewer()"></i>
+							</h1>
+						</div>
+
+						<div class="carousel-right-btn float-right">
+							<h1 class="next-arnis">
+								<i class="fas fa-angle-double-right" ng-click="nextViewer()"></i>
+							</h1>
+						</div>
+						<div class="floor-container d-flex flex-row align-items-center">
+				  			<svg id="grid-floor" width="100%" height="100%" xml	ns="http://www.w3.org/2000/svg">
+							    <defs>
+							      <pattern id="smallGrid" width="22" height="22" patternUnits="userSpaceOnUse">
+							        <path d="M 22 0 L 0 0 0 22" fill="none" stroke="rgba(0, 0, 0, 1)" stroke-width="2" />
+							      </pattern></defs>
+							    <rect width="100%" height="100%" fill="url(#smallGrid)" />
+							</svg>	
+				  		</div>
+
+				  		<div class="arnis-form-container d-flex flex-row justify-content-around">
+
+				  			<p>Form: {{arnisInfo.title}}</p>
+				  			<p>Model</p>
+				  			
+				  		</div>
+				  		
+
+					</div>
+					
 				</div>
+
+				<!-- <div class="page-navigation-container d-flex flex-row align-items-end">
+					<span class="btn nav-left"><i class="fas fa-long-arrow-alt-left"></i></span>
+					<span class="btn nav-right"><i class="fas fa-long-arrow-alt-right"></i></span>
+				</div> -->
+
+				<span ng-click="prevPage()" class="back-icon-container">
+					<i class="fas fa-arrow-circle-left"></i>
+				</span>
+
+				<span ng-click="showArnisInfo()" class="info-icon-container">
+					<i class="fas fa-question-circle"></i>
+					
+				</span>
+
+
+				<div class="arnis-style-info-container custom-modal"> 
+					<div class="custom-modal-content row">
+						<aside class="info-sidebar col-3">
+							<h3>{{arnisSystem.title}}</h3>
+							<img class="img-fluid " ng-src="{{arnisSystem.thumbnail}}">
+
+							<ul class="sidebar-nav nav flex-column">
+			                    <li class="nav-item"> <a href="#about-the-style">About the Style</a></li>
+			                    <li class="nav-item"> <a href="#grandmaster">Grandmaster</a></li>
+			                    <li class="nav-item"> <a href="#about-the-system">About the System</a></li>
+			                </ul>
+						</aside>
+						
+
+						<article class="info-content p-5 col-9 d-flex justify-content-between">
+							<div class="container-fluid d-flex h-100">
+								<div class="row justify-content-center align-self-center">
+									<div class="col-11">
+										 <!-- class="d-flex flex-column align-self-center -->
+										<div id="about-the-style"">
+											<img class="img-fluid mb-2" ng-src="{{arnisInfo.thumbnail}}">
+											<p ng-bind-html="arnisInfo.content.rendered"></p>
+										</div>
+										<hr>
+										<div id="grandmaster">
+											<img class="img-fluid mb-2" ng-src="{{arnisInfo.grandmasterImg}}">
+											<p>{{arnisInfo.acf.grandmaster_name[0]}}</p>
+											<p>{{arnisInfo.acf.about_grandmaster[0]}}</p>
+											<!-- <p ng-bind-html="arnisInfo.content.rendered"></p> -->
+										</div>
+										<hr>
+										<div id="about-the-system">
+											<p ng-bind-html="arnisSystem.content.rendered"></p>
+										</div>
+									</div>
+									<div class="col-1">
+										<span class="close" ng-click="hideArnisInfo()">&times;</span>
+									</div>
+								</div>
+							</div>
+						</article>
+
+					</div>
+				</div>
+
 			</section>
 		</div>
 	</div>
 
 
 	
-	
+	<script src="https://viewer.marmoset.co/main/marmoset.js"></script>	
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/velocity/1.0.0/velocity.min.js"></script>
 	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/assets/js/xx-cube.js"></script>
 
