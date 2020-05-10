@@ -1,4 +1,4 @@
-$().ready(function(){
+// $().ready(function(){
 
 
   // let currentPage = 1;
@@ -319,8 +319,6 @@ $().ready(function(){
 
 
 
-
-
   $(window).bind('keydown', function(e){
     if(e.key == "ArrowLeft"){
       pagesTrs.change(1)
@@ -329,11 +327,26 @@ $().ready(function(){
     }else if(e.key == "ArrowRight"){
       pagesTrs.change(0)
 
-
     }
   })
 
-  $('.page-navigation-container .nav-left').on('click', function(){
+  var sel = document.querySelector('.current-arnis-style')
+
+  //observe changes and capture URL of arnisStyle
+  var observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {        
+
+        if(sel.innerHTML != '')       
+          pagesTrs.change(0)        
+      })
+  })
+
+
+
+  var config = { characterData: true, attributes: false, childList: false, subtree: true };
+  observer.observe(sel,config)
+
+  $('.page-navigation-container .nav-left, .back-icon-container').on('click', function(){
     pagesTrs.change(1)
   })
 
@@ -370,7 +383,7 @@ $().ready(function(){
 
   }
 
-  const app = new Apx(Navigation, PageTransitions);
-  app.init();
+  const cube = new Apx(Navigation, PageTransitions);
+  cube.init();
 
-})
+// })
