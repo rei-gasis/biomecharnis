@@ -1,0 +1,652 @@
+:root {
+	--primary-color: #711712;
+	--call-color: #E52419;
+}
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Tahoma', sans-serif;
+	background-color: white;
+	word-wrap: break-word;
+	overflow-x: hidden; /*mobile carousel overflow*/
+	color: var(--primary-color);
+
+	scroll-behavior: smooth;
+}
+
+
+
+
+main {
+	background-color: #711712;
+	clip-path: polygon(0 0, 70% 0, 100% 100%, 0% 100%);
+	height: 100vh;
+}
+
+
+
+video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100% !important;
+	width: 100% !important;
+	
+}
+
+
+
+#landing video {
+	transform: translateX(150px);
+}
+
+#landing a {
+	text-decoration: none !important;
+	color: white;
+
+}
+
+
+
+#marmosetUI canvas{
+	/*border: solid black 2px;*/
+    background-image: url("http://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_200px.png") !important;
+    /*background-repeat:no-repeat;*/
+    /*width: 200px !important;
+    height: 298px !important;*/
+}
+
+.centered {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	height: 100%;
+	text-align: center;
+}
+
+.call-to-action {
+	cursor: pointer;
+	padding: 1vw 1.5vw;
+	color: white;
+	font-size: 1.5vw;
+	background-color: #E52419;
+	border: 1px solid #707070;;
+	border-radius: 2.25vh;
+}
+
+
+
+
+.navbar-brand {
+	color: white;
+}
+
+.navbar-brand:hover {
+	color: white;
+}
+
+.navbar-brand img {
+	margin-right: 5px;
+}
+
+a {
+	outline: none;
+}
+
+.navbar-container
+{
+	text-align: center;
+	background-color: var(--primary-color);
+	box-shadow: 0px -20px 5px 20px #333333;
+	padding: 10px;
+	font-size: 0;
+}
+
+
+.navbar-container ul {
+	margin: 0;
+	padding: 0;
+	text-align: right;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.navbar-container ul li {
+	display: inline-block;
+	font-size: 14px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.navbar-container ul li a,
+.navbar-container .dropdown-menu a,
+{
+
+	color: rgba(255,255,255,0.5);
+	text-decoration: none;
+	display: inline-block;	
+	padding: 10px;
+	transition: color 0.5s;
+}
+
+.navbar-container ul li.active a {
+	color: rgba(255,255,255,1);
+}
+
+.navbar-container ul li .underline {
+	height: 2px;
+	background-color: white;
+	width: 0%;
+	transition: width 0.2s, background-color 0.5s;
+	margin: 0 auto;
+}
+
+.navbar-container ul li.active .underline {
+	width: 100%;
+	background-color: white;
+}
+
+.navbar-container ul li:hover .underline {
+	background-color: white;
+	width: 100%;
+}
+
+.navbar-container ul li:hover a {
+}
+
+.navbar-container ul li:active a {
+	transition: none;
+	color: rgba(255,255,255,0.76);
+}
+
+.navbar-container ul li:active .underline {
+	transition: none;
+	background-color: rgba(255,255,255,0.76);
+}
+
+.navbar-container .navbar-toggle {
+    border-color: #DDD;
+}
+.navbar-container .navbar-toggle:hover,
+.navbar-container .navbar-toggle:focus {
+    background-color: #DDD;
+}
+.navbar-container .navbar-toggle .icon-bar {
+    background-color: #CCC;
+}
+
+.ml-auto .dropdown-menu {
+	border: 1px solid white;
+  	left: auto !important;
+  	right: 0px;
+}
+
+/*navbar toggler - animated*/
+.navbar-toggler {
+  border: none;
+  background: transparent !important;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  background: transparent !important;
+}
+
+.navbar-toggler .icon-bar {
+  background-color: #fff;
+  transform: rotate(0deg) translate(0px, 0px);
+  transition: ease all .2s;
+}
+
+.navbar-toggler .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+
+.navbar-toggler .icon-bar+.icon-bar {
+  margin-top: 4px;
+}
+
+.icon-bar:nth-child(2) {
+  width: 16px;
+  transition: ease all .2s;
+}
+
+.navbar-toggler:hover>.icon-bar:nth-child(2) {
+  width: 22px;
+  transition: ease all .2s;
+}
+
+.navbar-toggler:active>.icon-bar:nth-child(2) {
+  width: 22px;
+  transition: ease all .2s;
+}
+
+.navbar-toggler:not(.collapsed) .icon-bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 4px);
+  transition: ease all .2s;
+}
+
+.navbar-toggler:not(.collapsed) .icon-bar:nth-child(2) {
+  opacity: 0;
+  transition: ease all .2s;
+}
+
+.navbar-toggler:not(.collapsed) .icon-bar:nth-child(3) {
+  transform: rotate(-45deg) translate(4px, -4px);
+  transition: ease all .2s;
+}
+
+
+.navbar-container .dropdown-menu,
+.nav-tabs .dropdown-menu
+
+{
+	background-color: var(--primary-color);
+}
+
+.navbar-container .dropdown-menu a
+{ 
+	text-align: right;
+	display: inline-block;
+	font-size: 14px;
+	/*margin-right: 10px;*/
+	/*margin-left: 10px;*/
+}
+
+.navbar-container .dropdown-menu a:hover{ 
+	background-color: white;
+	color: var(--primary-color);
+}
+
+/*modal override*/
+.nav-tabs {
+	background-color: var(--primary-color);
+}
+
+.nav-tabs .nav-item {
+	margin: 0px;
+}
+
+.nav-tabs .nav-link,
+.nav-tabs .nav-link.active {
+	
+	background-color: var(--primary-color) !important;
+	color: rgba(255,255,255,0.5);
+	border: none;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-link:hover,
+.nav-tabs .dropdown-menu a
+{
+	color: rgba(255,255,255,1) !important;
+}
+
+
+.nav-tabs .dropdown-menu a:hover,
+.nav-tabs .dropdown-menu .dropdown-item.active {
+	color: var(--primary-color) !important;
+	background-color: white !important;
+}
+
+.nav-tabs .dropdown-menu {
+	background-color: var(--primary-color);
+}
+
+/*.nav-tabs .nav-item .dropdown.show a {
+	color: rgba(255,255,255,1) !important;
+}*/
+
+#arnis-style .nav-tabs #dropdown-view li{
+	background-color: black;
+}
+
+.nav-tabs .dropdown-menu a
+{ 
+	text-align: left;
+	display: inline-block;
+	font-size: 14px;
+	/*margin-right: 10px;*/
+	/*margin-left: 10px;*/
+}
+
+
+.tab-content {
+	text-align: justify;
+	padding: 30px;
+}
+
+.close {
+	color: rgba(255,255,255,0.5);
+}
+
+
+.tab-container {
+	padding: 30px;
+	/*border: 1px solid rgba(0,0,0, .16);
+	border-radius: 20px;
+	box-shadow: -10px 10px 30px rgba(0,0,0, .16);*/
+	
+}
+
+#what-is-biomecharnis h1 {
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+}
+
+.underline{
+	height: 2px;
+	background-color: var(--primary-color);
+	width: 15%;
+}
+
+
+.vertical-masonry { 
+  display: flex;
+  flex-flow: column wrap;
+  max-height: 75vh;
+  margin-left: -8px; /* Adjustment for the gutter */
+  width: 100%;
+}
+
+.masonry-brick {
+    overflow: hidden;
+    flex: 0 0 80%;
+	max-width: 80%;
+    /*border-radius: 5px;*/
+    margin: 0 0 8px 8px;
+    /*background-color: #333;*/
+    /*color: white;*/
+    position: relative;
+}
+
+.masonry-brick-img {
+	flex: 0 0 20%;
+	max-width: 20%;
+}
+
+
+.collaboration-logos img{
+	height: 75px;
+	max-height: 75px;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.group-title {
+	font-size: 1.5vw;	
+}
+
+
+
+
+.arnis-style-item {
+	cursor: pointer;
+	box-shadow: 0px 5px 10px rgba(0,0,0, .16);
+	/*box-shadow: -10 10 30 #707070;*/
+	padding: 0px !important;
+	border-radius: 10px 10px 10px 10px !important;
+ 	margin-top: 10px;
+ 	margin-bottom: 10px;
+
+ 	overflow: auto;
+}
+
+.arnis-style-item a {
+	text-decoration: none;
+	color: var(--primary-color);
+}
+
+
+
+.arnis-style-item .video-container {
+	border-radius: 10px 0px 0px 10px;		
+	background-color: black;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	min-height: 120px;
+	max-height: 120px;
+	height: 100%;
+	/*width: 65%;*/
+}
+
+.arnis-style-item video {
+	/*border-radius: 20px 0px 0px 20px;		*/
+	border-radius: 10px 0px 0px 10px;		
+	object-position: center;
+	/*object-position: top; /*REMOVE*/
+	object-fit: cover;
+	margin-right: 100px;
+}
+
+
+
+.arnis-style-item .info {
+	min-height: 120px;
+	max-height: 120px;
+	overflow: hidden;
+	font-family: 'Lato', sans-serif;
+}
+
+.arnis-style-item .info .title {
+	font-size: 2.25vw;
+}
+
+/*.arnis-style-item .info .description {
+	display: block;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+
+	overflow: hidden;
+	max-height: 5.4em;
+	line-height: 1.2em;
+	font-size: 1vw;
+	 
+
+	
+
+	color: black;
+}*/
+/*max-height: 50px;
+	text-overflow: ellipsis;
+	word-break: break-all;
+    white-space: normal;
+
+    font-family: 'Tahoma', sans-serif;
+	font-size: 1vw;	
+	line-height: 13px;*/
+.description {
+  width: 250px;
+  margin: 0 0 1em 0;
+  overflow: hidden;
+}
+
+
+.description > p > p{
+  margin: 0;
+  height: 3.6em; /* exactly three lines */
+}
+
+
+.description.fade {
+  position: relative;
+  height: 3.6em; /* exactly three lines */
+  line-height: 1.2em;
+  opacity: 1 !important;
+}
+
+.description.fade:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.2em;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
+
+
+
+/*About the project*/
+.fadeIn {
+	opacity: 0;
+}
+
+#what-is-biomecharnis .img-col {
+	flex: 50%;
+  	padding: 0 4px;
+}
+
+
+.img-col img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+/*Arnis style*/
+
+#arnis-style ul.nav-tabs {
+	border-radius: 10px 10px 0px 0px !important;
+}
+
+
+#arnis-style .marmosetContainer {
+  width: 100%;
+  height: 450px;
+}
+
+.arnis-style-viewer {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 450px !important;
+}
+
+
+
+.marmosetContainer > div {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+#arnis-style .tab-content {
+	padding: 0px !important;
+}
+
+
+.videoContainer.viewer {
+  border-radius: 10px;
+  z-index: 10;
+  display: inline;
+  
+  width: 100%;
+  height: 450px;
+  
+  text-align: center; 
+}
+
+#arnis-style .viewer-button {
+	color: var(--primary-color);	
+	background-color: white;
+	border-radius: 50%;
+	border: 1px solid rgba(0,0,0, 0.1);
+	z-index: 10;
+	font-size: 1.5rem;
+	padding: 0.25rem 1rem 0.25rem 1rem;
+	/*padding-right: 1rem;*/
+	
+
+	cursor: pointer;
+}
+
+#arnis-style .viewer-button:hover {
+	background-color: var(--primary-color);
+	color: white;
+	border: 1px solid rgba(58,58,58,0.5);
+}
+
+
+#arnis-style .viewer-button.left {
+	margin-left: 10vw;
+}
+
+#arnis-style .viewer-button i {
+	transform: scale(1.5);		
+}
+
+
+#arnis-style .viewer-button.left > span > i::before{
+	margin-right: 3px;
+}
+
+#arnis-style .viewer-button.right > span > i::before{
+	margin-left: 3px;
+}
+
+#arnis-style .viewer-button.right {
+	margin-right: 10vw;
+}
+
+
+/*Mobile*/
+@media screen and (max-width: 576px) {
+	.group-title {
+		margin-top: 3rem;
+		font-size: 6vw;
+	}
+
+	.vertical-masonry {
+		height: 100%;
+	}
+
+	.vertical-masonry .masonry-brick{
+		height: 100vh;
+	}
+
+
+	.arnis-style-item .info .title {
+		font-size: 4vw;
+	}
+
+	.arnis-style-item .info .description {
+		font-size: 2.5vw;	
+		line-height: 15px;
+	}
+
+}
+
+
+@media screen and (max-width: 766px) {
+    main {
+    	clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        /*background-color: #711712;
+		height: 100vh;*/
+    }
+
+    .call-to-action {
+    	padding: 0.75vw 1vw;
+    	font-size: 1.5vw;
+    }
+}
+
+@media screen and (min-width: 992){
+	video {
+		transform: translateX(150px) translateY(100px);
+	}
+}
